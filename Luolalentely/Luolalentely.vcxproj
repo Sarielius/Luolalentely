@@ -50,7 +50,7 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(ProjectDir)\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Box2D.lib;sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>XCOPY "$(MSBuildProjectDirectory)\bin\*.dll" "$(TargetDir)" /D /K /Y</Command>
