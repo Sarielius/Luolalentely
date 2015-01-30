@@ -3,9 +3,15 @@
 
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(200, 200), "SFML Demo");
-	sf::CircleShape shape(100.f);
-	shape.setFillColor(sf::Color::Blue);
+	/*sf::CircleShape shape(100.f);
+	shape.setFillColor(sf::Color::Blue);*/
+
+	//tehd‰‰n sprite
+	sf::Texture texture;
+	texture.loadFromFile("sprites/asdasd.png");
+	sf::Sprite sprite;
+	sprite.setTexture(texture);
+	sf::RenderWindow window(sf::VideoMode(texture.getSize().x,texture.getSize().y), "SFML Demo");
 
 	while (window.isOpen())
 	{
@@ -15,11 +21,11 @@ int main()
 			if (event.type == sf::Event::Closed)
 				window.close();
 		}
-
 		window.clear();
-		window.draw(shape);
+		window.draw(sprite);
 		window.display();
 	}
 	return 0;
 }
 //http://www.sfml-dev.org/tutorials/2.2/
+//lis‰tty spriten kokonen ikkuna
