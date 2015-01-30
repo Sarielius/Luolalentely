@@ -22,4 +22,4 @@ int main()
 	}
 	return 0;
 }
-//kebkmbknakankna
+//http://www.sfml-dev.org/tutorials/2.2/
