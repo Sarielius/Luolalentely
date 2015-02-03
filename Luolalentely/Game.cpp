@@ -1,5 +1,5 @@
 #include "Game.h"
-
+#include "GameplayState.h"
 
 Game::Game(int w, int h) : window(sf::VideoMode(w,h),"Project OSPREY")
 {
@@ -33,20 +33,15 @@ void Game::run()
 
 void Game::update()
 {
-
-
-
+	stateManager.update();
 }
 
 void Game::draw()
 {
-
-
-
+	stateManager.draw();
 }
 
 void Game::init()
 {
-
-
+	stateManager.pushState(new GameplayState);
 }
