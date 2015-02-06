@@ -8,7 +8,7 @@ public:
 	ColliderComponent();
 	~ColliderComponent();
 private:
-	b2Body collider;
+	b2Body *collider;
 };
 
 #endif
