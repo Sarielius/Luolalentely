@@ -1,6 +1,7 @@
 #include "Game.h"
 #include "GameplayState.h"
 
+
 Game::Game(int w, int h) : window(sf::VideoMode(w,h),"Cave Explorer")
 {
 }
@@ -12,6 +13,7 @@ Game::~Game()
 
 void Game::run()
 {
+	sf::Clock clock;
 	init();
 	window.setFramerateLimit(60);
 	while (window.isOpen())
@@ -22,18 +24,18 @@ void Game::run()
 			if (event.type == sf::Event::Closed)
 				window.close();
 		}
-
+		sf::Time elapsed = clock.restart();
 		window.clear(sf::Color::Black);
-		update();
+		update(elapsed);
 		draw();
 		window.display();
 
 	}
 }
 
-void Game::update()
+void Game::update(sf::Time &elapsed)
 {
-	stateManager.update();
+	stateManager.update(elapsed);
 }
 
 void Game::draw()

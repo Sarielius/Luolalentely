@@ -8,7 +8,7 @@ class Game
 public:
 	Game(int w, int h);
 	~Game();
-	void update();
+	void update(sf::Time &elapsed);
 	void draw();
 	void run();
 	void init();

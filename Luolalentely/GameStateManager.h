@@ -2,6 +2,7 @@
 #define GAMESTATEMANAGER_H
 #include <vector>
 #include "GameState.h"
+#include <SFML/Graphics.hpp>
 
 class GameStateManager
 {
@@ -10,7 +11,7 @@ public:
 	~GameStateManager();
 	void pushState(GameState*);
 	void pop();
-	void update();
+	void update(sf::Time &elapsed);
 	void draw();
 	void change(GameState*);
 

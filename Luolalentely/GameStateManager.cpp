@@ -1,6 +1,7 @@
 #include "GameStateManager.h"
 
 
+
 GameStateManager::GameStateManager()
 {
 }
@@ -11,11 +12,11 @@ GameStateManager::~GameStateManager()
 }
 
 
-void GameStateManager::update()
+void GameStateManager::update(sf::Time &elapsed)
 {
 	if (states.size() != 0)
 	{
-		states.back()->update();
+		states.back()->update(elapsed);
 	}
 
 }

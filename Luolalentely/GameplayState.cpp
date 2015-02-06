@@ -1,6 +1,7 @@
 #include "GameplayState.h"
 
 
+
 GameplayState::GameplayState()
 {
 }
@@ -16,7 +17,7 @@ void GameplayState::draw()
 
 }
 
-void GameplayState::update()
+void GameplayState::update(sf::Time &elapsed)
 {
 
 
