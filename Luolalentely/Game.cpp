@@ -1,7 +1,7 @@
 #include "Game.h"
 #include "GameplayState.h"
 
-Game::Game(int w, int h) : window(sf::VideoMode(w,h),"Project OSPREY")
+Game::Game(int w, int h) : window(sf::VideoMode(w,h),"Cave Explorer")
 {
 }
 
