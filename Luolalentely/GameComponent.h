@@ -7,7 +7,8 @@ class GameComponent
 public:
 	GameComponent();
 	~GameComponent();
-private:
+	void update(sf::Time &elapsed);
+	void draw();
 };
 
 #endif
