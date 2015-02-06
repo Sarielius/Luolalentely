@@ -9,6 +9,11 @@ GameStateManager::GameStateManager()
 
 GameStateManager::~GameStateManager()
 {
+	for (auto &state : states)
+	{
+		delete state;
+	}
+	states.clear();
 }
 
 
