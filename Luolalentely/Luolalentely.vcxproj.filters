@@ -54,6 +54,9 @@
     <ClCompile Include="GameStateManager.cpp">
       <Filter>Source Files\State</Filter>
     </ClCompile>
+    <ClCompile Include="SpriteComponent.cpp">
+      <Filter>Source Files\Component</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -79,6 +82,9 @@
     </ClInclude>
     <ClInclude Include="GameStateManager.h">
       <Filter>Header Files\State</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteComponent.h">
+      <Filter>Header Files\Component</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

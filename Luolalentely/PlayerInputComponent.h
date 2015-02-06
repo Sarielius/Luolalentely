@@ -1,8 +1,9 @@
 #ifndef PLAYERINPUTCOMPONENT
 #define PLAYERINPUTCOMPONENT
 #include <SFML\Graphics.hpp>
+#include "GameComponent.h"
 
-class PlayerInputComponent
+class PlayerInputComponent : public GameComponent
 {
 public:
 	PlayerInputComponent();

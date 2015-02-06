@@ -29,7 +29,6 @@ void Game::run()
 		update(elapsed);
 		draw();
 		window.display();
-
 	}
 }
 

@@ -2,8 +2,9 @@
 #define COLLIDERCOMPONENT_H
 #include <Box2D\Box2D.h>
 #include <SFML\Graphics.hpp>
+#include "GameComponent.h"
 
-class ColliderComponent
+class ColliderComponent : public GameComponent
 {
 public:
 	ColliderComponent();

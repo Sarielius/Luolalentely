@@ -18,6 +18,6 @@ void PlayerInputComponent::update(sf::Time &elapsed)
 
 void PlayerInputComponent::draw()
 {
-
+	
 
 }
