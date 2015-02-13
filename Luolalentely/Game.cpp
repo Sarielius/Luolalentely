@@ -44,5 +44,5 @@ void Game::draw()
 
 void Game::init()
 {
-	stateManager.pushState(new GameplayState);
+	stateManager.pushState(new GameplayState(this));
 }

@@ -16,6 +16,7 @@ public:
 	void draw();
 	void change(GameState*);
 
+
 private:
 	std::vector<GameState*> states;
 

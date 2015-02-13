@@ -2,8 +2,10 @@
 
 
 
-GameplayState::GameplayState()
+GameplayState::GameplayState(Game *game) : GameState(game)
 {
+	this->loadTextures();
+	this->backGround.setTexture(this->textMgr.getRef("Background"));
 }
 
 
@@ -27,6 +29,7 @@ void GameplayState::update(sf::Time &elapsed)
 
 void GameplayState::draw()
 {
+	game->window.draw(backGround);
 	for (auto &object : gameObjects)
 	{
 		object->draw();
@@ -37,4 +40,9 @@ void GameplayState::draw()
 void GameplayState::addGameObject(GameObject* gameObject)
 {
 	gameObjects.push_back(gameObject);
+}
+
+void GameplayState::loadTextures()
+{
+	textMgr.loadTexture("Background", "sprites/tausta.png");
 }

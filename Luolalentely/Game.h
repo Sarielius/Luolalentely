@@ -12,9 +12,8 @@ public:
 	void draw();
 	void run();
 	void init();
-
+	sf::RenderWindow window;
 private:
 	GameStateManager stateManager;
-	sf::RenderWindow window;
 };
 #endif

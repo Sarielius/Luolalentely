@@ -2,17 +2,21 @@
 #define GAMEPLAYSTATE_H
 #include "GameState.h"
 #include "GameObject.h"
-#include <SFML/Graphics.hpp>
+#include "TextureManager.h"
+#include "Game.h"
 
 class GameplayState :public GameState
 {
 public:
-	GameplayState();
+	GameplayState(Game *game);
 	~GameplayState();
 	void update(sf::Time &elapsed);
 	void draw();
 	void addGameObject(GameObject*);
+	void loadTextures();
 private:
 	std::vector<GameObject*> gameObjects;
+	TextureManager textMgr;
+	sf::Sprite backGround;
 };
 #endif

@@ -2,7 +2,7 @@
 
 
 
-GameState::GameState()
+GameState::GameState(Game *game) : game(game)
 {
 }
 
