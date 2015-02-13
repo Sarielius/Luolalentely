@@ -2,6 +2,7 @@
 #define GAMESTATEMANAGER_H
 #include <vector>
 #include "GameState.h"
+#include "TextureManager.h"
 #include <SFML/Graphics.hpp>
 
 class GameStateManager
