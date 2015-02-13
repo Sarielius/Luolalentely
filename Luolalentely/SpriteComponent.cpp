@@ -1,7 +1,7 @@
 #include "SpriteComponent.h"
 
 
-SpriteComponent::SpriteComponent()
+SpriteComponent::SpriteComponent(GameObject* g) : GameComponent(g)
 {
 }
 

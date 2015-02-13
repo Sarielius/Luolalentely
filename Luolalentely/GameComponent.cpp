@@ -1,8 +1,9 @@
 #include "GameComponent.h"
+#include <cassert>
 
-
-GameComponent::GameComponent()
+GameComponent::GameComponent(GameObject* g) : owner(g)
 {
+	assert(g != nullptr);
 }
 
 
@@ -19,4 +20,8 @@ void GameComponent::draw()
 {
 
 
+}
+
+GameObject* GameComponent::getOwner() {
+	return owner;
 }

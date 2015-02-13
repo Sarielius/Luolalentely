@@ -1,7 +1,7 @@
 #include "PlayerInputComponent.h"
 
 
-PlayerInputComponent::PlayerInputComponent()
+PlayerInputComponent::PlayerInputComponent(GameObject* g) : GameComponent(g)
 {
 }
 

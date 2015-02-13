@@ -7,7 +7,7 @@
 class SpriteComponent : public GameComponent
 {
 public:
-	SpriteComponent();
+	SpriteComponent(GameObject*);
 	~SpriteComponent();
 	void update(sf::Time &elapsed);
 	void draw();

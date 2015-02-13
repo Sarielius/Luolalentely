@@ -6,7 +6,7 @@
 class PlayerInputComponent : public GameComponent
 {
 public:
-	PlayerInputComponent();
+	PlayerInputComponent(GameObject*);
 	~PlayerInputComponent();	
 	void update(sf::Time &elapsed);
 	void draw();

@@ -1,8 +1,9 @@
 #include "ColliderComponent.h"
+#include "GameObject.h"
 
-
-ColliderComponent::ColliderComponent()
+ColliderComponent::ColliderComponent(GameObject* g) : GameComponent(g)
 {
+	ColliderComponent* asd = g->getComponent<ColliderComponent>();
 }
 
 

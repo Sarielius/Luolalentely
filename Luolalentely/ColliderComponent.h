@@ -7,7 +7,7 @@
 class ColliderComponent : public GameComponent
 {
 public:
-	ColliderComponent();
+	ColliderComponent(GameObject*);
 	~ColliderComponent();
 	void update(sf::Time &elapsed);
 	void draw();
