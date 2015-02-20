@@ -27,7 +27,7 @@ void Game::run()
 		sf::Time elapsed = clock.restart();
 		window.clear(sf::Color::Black);
 		update(elapsed);
-		draw();
+		draw(window);
 		window.display();
 	}
 }
@@ -37,9 +37,9 @@ void Game::update(sf::Time &elapsed)
 	stateManager.update(elapsed);
 }
 
-void Game::draw()
+void Game::draw(sf::RenderWindow& win)
 {
-	stateManager.draw();
+	stateManager.draw(win);
 }
 
 void Game::init()

@@ -7,10 +7,10 @@
 class SpriteComponent : public GameComponent
 {
 public:
-	SpriteComponent(GameObject*);
+	SpriteComponent(GameObject*, sf::Texture&);
 	~SpriteComponent();
 	void update(sf::Time &elapsed);
-	void draw();
+	void draw(sf::RenderWindow& window);
 private:
 	sf::Sprite sprite;
 };

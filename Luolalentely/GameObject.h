@@ -9,7 +9,7 @@ public:
 	GameObject();
 	~GameObject();
 	void update(sf::Time &elapsed);
-	void draw();
+	void draw(sf::RenderWindow& win);
 	void pushComponent(GameComponent* compo);
 
 	template<class T>

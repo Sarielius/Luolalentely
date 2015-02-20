@@ -25,11 +25,10 @@ void GameObject::update(sf::Time &elapsed)
 
 }
 
-void GameObject::draw()
+void GameObject::draw(sf::RenderWindow& win)
 {
-	for (auto &component : components)
-	{
-		component->draw();
+	for (size_t i = 0; i < components.size(); i++) {
+		components[i]->draw(win);
 	}
 	
 }

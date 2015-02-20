@@ -12,7 +12,7 @@ public:
 	GameplayState(Game *game);
 	~GameplayState();
 	void update(sf::Time &elapsed);
-	void draw();
+	void draw(sf::RenderWindow&);
 	void addGameObject(GameObject*);
 	void loadTextures();
 private:

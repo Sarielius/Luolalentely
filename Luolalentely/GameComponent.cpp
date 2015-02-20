@@ -15,7 +15,7 @@ void GameComponent::update(sf::Time &elapsed)
 {
 
 }
-void GameComponent::draw()
+void GameComponent::draw(sf::RenderWindow& win)
 {
 
 }

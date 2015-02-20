@@ -27,11 +27,11 @@ void GameStateManager::update(sf::Time &elapsed)
 
 }
 
-void GameStateManager::draw()
+void GameStateManager::draw(sf::RenderWindow& win)
 {
 	if (states.size() != 0)
 	{
-		states.back()->draw();
+		states.back()->draw(win);
 	}
 
 }

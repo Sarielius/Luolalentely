@@ -1,10 +1,13 @@
 #include "GameplayState.h"
-
+#include "SpriteComponent.h"
 
 
 GameplayState::GameplayState(Game *game) : GameState(game), world(b2Vec2(0.5f, 10.f))
 {
 	this->loadTextures();
+	GameObject *gameobject = new GameObject();
+	gameobject->pushComponent(new SpriteComponent(gameobject, textMgr.getRef("sprite")));
+	addGameObject(gameobject);
 	this->backGround.setTexture(this->textMgr.getRef("Background"));
 }
 
@@ -27,12 +30,12 @@ void GameplayState::update(sf::Time &elapsed)
 
 }
 
-void GameplayState::draw()
+void GameplayState::draw(sf::RenderWindow& win)
 {
 	game->window.draw(backGround);
 	for (auto &object : gameObjects)
 	{
-		object->draw();
+		object->draw(win);
 	}
 
 }
@@ -45,4 +48,5 @@ void GameplayState::addGameObject(GameObject* gameObject)
 void GameplayState::loadTextures()
 {
 	textMgr.loadTexture("Background", "sprites/tausta.png");
+	textMgr.loadTexture("sprite", "sprites/alus.png");
 }

@@ -11,7 +11,7 @@ public:
 	~GameComponent();
 	GameObject* getOwner();
 	void update(sf::Time &elapsed);
-	void draw();
+	virtual void draw(sf::RenderWindow&);
 };
 
 #endif

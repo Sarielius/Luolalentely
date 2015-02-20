@@ -10,7 +10,7 @@ public:
 	GameState(Game *game);
 	~GameState();
 	virtual void update(sf::Time &elapsed) = 0;
-	virtual void draw() = 0;
+	virtual void draw(sf::RenderWindow& win) = 0;
 protected:
 	Game *game;
 };

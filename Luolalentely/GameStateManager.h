@@ -13,7 +13,7 @@ public:
 	void pushState(GameState*);
 	void pop();
 	void update(sf::Time &elapsed);
-	void draw();
+	void draw(sf::RenderWindow&);
 	void change(GameState*);
 
 

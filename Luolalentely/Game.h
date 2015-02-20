@@ -9,7 +9,7 @@ public:
 	Game(int w, int h);
 	~Game();
 	void update(sf::Time &elapsed);
-	void draw();
+	void draw(sf::RenderWindow&);
 	void run();
 	void init();
 	sf::RenderWindow window;
