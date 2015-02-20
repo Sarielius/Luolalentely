@@ -3,11 +3,13 @@
 
 PlayerInputComponent::PlayerInputComponent(GameObject* g) : GameComponent(g)
 {
+
 }
 
 
 PlayerInputComponent::~PlayerInputComponent()
 {
+
 }
 
 void PlayerInputComponent::update(sf::Time &elapsed)
