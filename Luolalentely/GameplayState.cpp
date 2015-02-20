@@ -2,7 +2,7 @@
 
 
 
-GameplayState::GameplayState(Game *game) : GameState(game)
+GameplayState::GameplayState(Game *game) : GameState(game), world(b2Vec2(0.5f, 10.f))
 {
 	this->loadTextures();
 	this->backGround.setTexture(this->textMgr.getRef("Background"));

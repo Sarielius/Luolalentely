@@ -7,12 +7,14 @@
 class ColliderComponent : public GameComponent
 {
 public:
-	ColliderComponent(GameObject*);
+	ColliderComponent(GameObject*, b2World&, sf::FloatRect);
 	~ColliderComponent();
 	void update(sf::Time &elapsed);
 	void draw();
+	b2Body* getBody();
 private:
 	b2Body *collider;
+	b2World& world;
 };
 
 #endif
