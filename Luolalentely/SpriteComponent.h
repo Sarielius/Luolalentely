@@ -4,6 +4,7 @@
 #include "GameComponent.h"
 
 
+
 class SpriteComponent : public GameComponent
 {
 public:

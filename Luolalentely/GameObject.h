@@ -15,7 +15,6 @@ public:
 	template<class T>
 	T* getComponent() 
 	{
-
 		for (int i = 0; i < components.size(); i++) 
 		{
 			GameComponent* c = components[i];
