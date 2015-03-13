@@ -35,8 +35,8 @@ void PlayerInputComponent::update(sf::Time &elapsed)
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 	{
-		velocity.x = cos(angle) * speed ;
-		velocity.y = sin(angle) * speed ;
+		velocity.x = sin(angle) * speed ;
+		velocity.y = cos(angle) * -speed ;
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 	{
