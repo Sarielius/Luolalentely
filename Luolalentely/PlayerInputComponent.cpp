@@ -18,7 +18,7 @@ PlayerInputComponent::~PlayerInputComponent()
 
 void PlayerInputComponent::update(sf::Time &elapsed)
 { 
-	const float speed = 5.f;
+	const float speed = 20.f;
 	float angle = getOwner()->getComponent<ColliderComponent>()->getBody()->GetAngle();
 	float rotation = 0.f;
 	
@@ -27,11 +27,11 @@ void PlayerInputComponent::update(sf::Time &elapsed)
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
-		rotation = -0.5f;
+		rotation = -0.005f;
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
-		rotation = 0.5f;
+		rotation = 0.005f;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 	{

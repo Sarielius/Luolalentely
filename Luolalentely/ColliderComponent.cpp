@@ -8,7 +8,7 @@ ColliderComponent::ColliderComponent(GameObject* g, b2World& world, sf::FloatRec
 	def.fixedRotation = false;
 	def.type = b2_dynamicBody; 
 	def.angularDamping = 5.f;
-	def.linearDamping = 1.5f;
+	def.linearDamping = 0.2f;
 	def.position = Convert::worldToBox2d(dimensions.left, dimensions.top);
 	collider = world.CreateBody(&def);
 	b2PolygonShape Shape;
