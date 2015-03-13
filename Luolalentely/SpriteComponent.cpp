@@ -5,6 +5,7 @@
 
 SpriteComponent::SpriteComponent(GameObject* g, sf::Texture &sprite) : GameComponent(g), sprite(sprite)
 {
+	this->sprite.setOrigin(sprite.getSize().x / 2, sprite.getSize().y / 2);
 }
 
 
@@ -16,6 +17,7 @@ void SpriteComponent::update(sf::Time &elapsed)
 {
 	b2Vec2 pos = Convert::box2dToWorld(getOwner()->getComponent<ColliderComponent>()->getBody()->GetPosition());
 	sprite.setPosition(pos.x, pos.y);
+	sprite.setRotation(getOwner()->getComponent<ColliderComponent>()->getBody()->GetAngle());
 }
 
 void SpriteComponent::draw(sf::RenderWindow& window)

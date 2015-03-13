@@ -10,6 +10,7 @@ GameplayState::GameplayState(Game *game) : GameState(game), world(b2Vec2(0.5f, 1
 	gameobject->pushComponent(new PlayerInputComponent(gameobject));
 	gameobject->pushComponent(new SpriteComponent(gameobject, textMgr.getRef("sprite")));
 	addGameObject(gameobject);
+	//float32 angle = 
 	this->backGround.setTexture(this->textMgr.getRef("Background"));
 }
 

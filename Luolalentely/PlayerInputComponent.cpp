@@ -15,17 +15,20 @@ PlayerInputComponent::~PlayerInputComponent()
 
 void PlayerInputComponent::update(sf::Time &elapsed)
 {
-	const float speed = 20.f;
+	const float speed = 5.f;
+	float angle = getOwner()->getComponent<ColliderComponent>()->getBody()->GetAngle();
+	float rotation = 0.f;
+	
 
 	b2Vec2 velocity(0, 0);
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
-		velocity.x = -speed;
+		rotation = -1.5f;
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
-		velocity.x = speed;
+		rotation = 1.5f;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 	{
@@ -33,10 +36,19 @@ void PlayerInputComponent::update(sf::Time &elapsed)
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 	{
-		velocity.y = speed;
+		if (velocity.y != 0)
+		{
+			velocity.y = speed;
+		}
+		
 	}
 
-	getOwner()->getComponent<ColliderComponent>()->getBody()->SetLinearVelocity(velocity);
+
+
+	getOwner()->getComponent<ColliderComponent>()->getBody()->ApplyAngularImpulse(rotation, true);
+	getOwner()->getComponent<ColliderComponent>()->getBody()->ApplyForce(velocity, getOwner()->getComponent<ColliderComponent>()->getBody()->GetWorldCenter(), true);
+	//getOwner()->getComponent<ColliderComponent>()->getBody()->SetLinearVelocity(velocity);
+	
 }
 
 void PlayerInputComponent::draw()
