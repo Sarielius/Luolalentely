@@ -1,8 +1,9 @@
 #include "PlayerInputComponent.h"
 #include "GameObject.h"
 #include "ColliderComponent.h"
-
+#define DEGTORAD 0.0174532925199432957f
 #define RADTODEG 57.295779513082320876f
+#include <iostream>
 
 PlayerInputComponent::PlayerInputComponent(GameObject* g) : GameComponent(g)
 {
@@ -19,7 +20,6 @@ void PlayerInputComponent::update(sf::Time &elapsed)
 { 
 	const float speed = 5.f;
 	float angle = getOwner()->getComponent<ColliderComponent>()->getBody()->GetAngle();
-	angle *= RADTODEG;
 	float rotation = 0.f;
 	
 
@@ -27,24 +27,24 @@ void PlayerInputComponent::update(sf::Time &elapsed)
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
-		rotation = -1.5f;
+		rotation = -0.5f;
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
-		rotation = 1.5f;
+		rotation = 0.5f;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 	{
-		velocity.x = cos(angle) * speed;
-		velocity.y = sin(angle) * speed;
+		velocity.x = cos(angle) * speed ;
+		velocity.y = sin(angle) * speed ;
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 	{
 			velocity.y = speed;
 	}
 
-
-
+	
+	velocity.Normalize();
 	getOwner()->getComponent<ColliderComponent>()->getBody()->ApplyAngularImpulse(rotation, true);
 	getOwner()->getComponent<ColliderComponent>()->getBody()->ApplyForce(velocity, getOwner()->getComponent<ColliderComponent>()->getBody()->GetWorldCenter(), true);
 	
