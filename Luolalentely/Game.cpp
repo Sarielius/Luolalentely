@@ -2,7 +2,7 @@
 #include "GameplayState.h"
 
 
-Game::Game(int w, int h) : window(sf::VideoMode(w,h),"Cave Explorer")
+Game::Game(int w, int h) : window(sf::VideoMode(w,h),"Cave Explorer") // Asettaa ikkunan kooksi saadut arvot ja laittaa kivan nimen yl‰kulmaan
 {
 }
 
@@ -13,28 +13,29 @@ Game::~Game()
 
 void Game::run()
 {
-	sf::Clock clock;
-	init();
-	window.setFramerateLimit(60);
-	while (window.isOpen())
+	sf::Clock clock; // Tehd‰‰n kello
+	init(); // K‰ynnist‰‰ pelin luomalla gameplaystaten
+	window.setFramerateLimit(60); // FPS lock
+	while (window.isOpen()) // Looppi pyˆrii kun ikkuna on auki
 	{
-		sf::Event event;
-		while (window.pollEvent(event))
+		sf::Event event; // Tehd‰‰n eventti
+		while (window.pollEvent(event)) // Tarkistaa eventin tyyppi‰ koko ajan.
 		{
-			if (event.type == sf::Event::Closed)
+			if (event.type == sf::Event::Closed) // Jos ikkuna suljetaan, ohjelma sulkeutuu
 				window.close();
 		}
-		sf::Time elapsed = clock.restart();
-		window.clear(sf::Color::Black);
-		update(elapsed);
-		draw(window);
-		window.display();
-	}
+		sf::Time elapsed = clock.restart(); // clock.restart() palauttaa kellon arvon eli ajan ja resetoi sen.
+		window.clear(sf::Color::Black); // Ruutu k‰y joka framen v‰liss‰ mustana, eli paint it black edellisen framen p‰‰lle.
+		update(elapsed); // P‰ivitet‰‰n ajalla.
+		draw(window); // Piirt‰‰ kaiken ikkunaan.
+		window.display(); // N‰ytt‰‰ k‰ytt‰j‰lle ikkunassa stuffii.
+	} // Rinse and repeat kunnes ikkuna suljetaan.
 }
 
 void Game::update(sf::Time &elapsed)
 {
-	stateManager.update(elapsed);
+	stateManager.update(elapsed); 
+
 }
 
 void Game::draw(sf::RenderWindow& win)

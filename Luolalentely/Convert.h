@@ -2,7 +2,7 @@
 #define CONVERT_H
 #include<Box2D\Box2D.h>
 
-class Convert
+class Convert // Luokka muuttaa arvoja box2d:n arvoiksi ja toisinpäin.
 {
 public:
 

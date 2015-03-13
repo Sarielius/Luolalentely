@@ -16,6 +16,7 @@ SpriteComponent::~SpriteComponent()
 
 void SpriteComponent::update(sf::Time &elapsed)
 {
+	// Asetetaan spriten asemaksi gameobjectin keskipiste. 
 	b2Vec2 pos = Convert::box2dToWorld(getOwner()->getComponent<ColliderComponent>()->getBody()->GetPosition());
 	sprite.setPosition(pos.x, pos.y);
 	

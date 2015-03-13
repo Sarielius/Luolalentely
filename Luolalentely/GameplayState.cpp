@@ -5,7 +5,7 @@
 GameplayState::GameplayState(Game *game) : GameState(game), world(b2Vec2(0.0f, 2.0f))
 {
 	this->loadTextures();
-	GameObject *gameobject = new GameObject();
+	GameObject *gameobject = new GameObject(game);
 	gameobject->pushComponent(new ColliderComponent(gameobject, world, sf::FloatRect(0.f, 0.f, 32.f, 32.f)));
 	gameobject->pushComponent(new PlayerInputComponent(gameobject));
 	gameobject->pushComponent(new SpriteComponent(gameobject, textMgr.getRef("sprite")));

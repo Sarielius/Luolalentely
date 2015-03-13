@@ -2,8 +2,8 @@
 
 int main()
 {
-	Game game(1280, 720);
-	game.run();
+	Game game(1280, 720); // Gamen konstruktorin mukaisesti annetaan kaksi arvoa jotka ovat ikkunan koko.
+	game.run(); // K‰ynnistet‰‰n peli
 	return 0;
 }
 

@@ -2,16 +2,18 @@
 #define GAMEOBJECT_H
 #include <SFML/Graphics.hpp>
 #include "GameComponent.h"
+#include "Game.h"
+
 
 class GameObject
 {
 public:
-	GameObject();
+	GameObject(Game *game);
 	~GameObject();
 	void update(sf::Time &elapsed);
 	void draw(sf::RenderWindow& win);
 	void pushComponent(GameComponent* compo);
-
+	Game* getGame();
 	template<class T>
 	T* getComponent() 
 	{
@@ -27,6 +29,7 @@ public:
 
 private:
 	std::vector<GameComponent*> components;
+	Game* game;
 };
 
 #endif
