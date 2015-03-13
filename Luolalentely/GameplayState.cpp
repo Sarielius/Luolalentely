@@ -2,7 +2,7 @@
 #include "SpriteComponent.h"
 #include "PlayerInputComponent.h"
 
-GameplayState::GameplayState(Game *game) : GameState(game), world(b2Vec2(0.5f, 10.f))
+GameplayState::GameplayState(Game *game) : GameState(game), world(b2Vec2(0.0f, 1.0f))
 {
 	this->loadTextures();
 	GameObject *gameobject = new GameObject();
