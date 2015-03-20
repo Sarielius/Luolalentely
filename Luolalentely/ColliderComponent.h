@@ -14,7 +14,7 @@ public:
 	b2Body* getBody();
 private:
 	b2Body *collider;
-	b2World& world;
+	b2World &world;
 };
 
 #endif

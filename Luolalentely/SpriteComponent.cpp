@@ -5,8 +5,9 @@
 #define RADTODEG 57.295779513082320876f
 
 SpriteComponent::SpriteComponent(GameObject* g, sf::Texture &sprite) : GameComponent(g), sprite(sprite)
-{
-	this->sprite.setOrigin(sprite.getSize().x / 2, sprite.getSize().y / 2);
+{ 
+	//Asetetaan spriten akselikeskipiste itse keskipisteeseen.
+	this->sprite.setOrigin(sprite.getSize().x / 2, sprite.getSize().y / 2); 
 }
 
 
@@ -20,10 +21,11 @@ void SpriteComponent::update(sf::Time &elapsed)
 	b2Vec2 pos = Convert::box2dToWorld(getOwner()->getComponent<ColliderComponent>()->getBody()->GetPosition());
 	sprite.setPosition(pos.x, pos.y);
 	
-	sprite.setRotation(getOwner()->getComponent<ColliderComponent>()->getBody()->GetAngle()*RADTODEG);
+	sprite.setRotation(getOwner()->getComponent<ColliderComponent>()->getBody()->GetAngle()*RADTODEG); 
+	//^Hakee bodyn kulma-arvon ja pyörittää spriteä sen mukaisesti.
 }
 
-void SpriteComponent::draw(sf::RenderWindow& window)
+void SpriteComponent::draw(sf::RenderWindow &window) //Piirtää spriten ikkunaan.
 {
 	window.draw(sprite);
 }

@@ -10,7 +10,7 @@ GameStateManager::GameStateManager()
 
 GameStateManager::~GameStateManager()
 {
-	for (auto &state : states)
+	for (auto &state : states) 
 	{
 		delete state;
 	}
@@ -18,7 +18,7 @@ GameStateManager::~GameStateManager()
 }
 
 
-void GameStateManager::update(sf::Time &elapsed)
+void GameStateManager::update(sf::Time &elapsed) //P‰ivitet‰‰n states vektori.
 {
 	if (states.size() != 0)
 	{
@@ -27,7 +27,7 @@ void GameStateManager::update(sf::Time &elapsed)
 
 }
 
-void GameStateManager::draw(sf::RenderWindow& win)
+void GameStateManager::draw(sf::RenderWindow& win) //Piirret‰‰n states vektorin per‰lt‰ seuraava state.
 {
 	if (states.size() != 0)
 	{
@@ -38,20 +38,20 @@ void GameStateManager::draw(sf::RenderWindow& win)
 
 void GameStateManager::pushState(GameState* state)
 {
-	states.push_back(state);
+	states.push_back(state); //Lis‰‰ staten vektoriin
 }
 
 void GameStateManager::pop()
 {
-	if (states.size() != 0)
+	if (states.size() != 0) //Poistaa perimm‰isen staten.
 	{
 		states.erase(states.end() - 1);
 	}
 
 }
 
-void GameStateManager::change(GameState* state)
+void GameStateManager::change(GameState* state) //Poistaa staten ja "vaihtaa" tilalle toisen staten.
 {
-	pop();
+	pop(); 
 	pushState(state);
 }

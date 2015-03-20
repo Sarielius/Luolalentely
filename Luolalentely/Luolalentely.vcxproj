@@ -83,6 +83,9 @@
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="SpriteComponent.cpp" />
     <ClCompile Include="TextureManager.cpp" />
+    <ClCompile Include="TileMap.cpp" />
+    <ClCompile Include="WallColliderComponent.cpp" />
+    <ClCompile Include="WallSpriteComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ColliderComponent.h" />
@@ -96,6 +99,9 @@
     <ClInclude Include="PlayerInputComponent.h" />
     <ClInclude Include="SpriteComponent.h" />
     <ClInclude Include="TextureManager.h" />
+    <ClInclude Include="TileMap.h" />
+    <ClInclude Include="WallColliderComponent.h" />
+    <ClInclude Include="WallSpriteComponent.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

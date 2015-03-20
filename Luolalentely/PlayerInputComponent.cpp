@@ -18,34 +18,35 @@ PlayerInputComponent::~PlayerInputComponent()
 
 void PlayerInputComponent::update(sf::Time &elapsed)
 { 
-	const float speed = 20.f;
-	float angle = getOwner()->getComponent<ColliderComponent>()->getBody()->GetAngle();
-	float rotation = 0.f;
+	const float speed = 20.f; //Asetetaan "pohja"nopeus
+	float angle = getOwner()->getComponent<ColliderComponent>()->getBody()->GetAngle(); //Haetaan aluksen kulma.
+	float rotation = 0.f; //Alustetaan rotaatiovoima
 	
 
-	b2Vec2 velocity(0,0);
+	b2Vec2 velocity(0,0); //Tehdään nopeusvektori joka ottaa X ja Y arvot.
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
-		rotation = -0.005f; 
+		rotation = -0.005f;
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
 		rotation = 0.005f; 
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-	{
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) 
+	{ //Laskut nopeuden lisäämiseksi objektin kärjen suuntaan.
 		velocity.x = sin(angle) * speed ;
 		velocity.y = cos(angle) * -speed ;
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) //Escapella suljetaan ikkuna
 	{
 		getOwner()->getGame()->window.close();
 	}
 
-	velocity.Normalize();
-	getOwner()->getComponent<ColliderComponent>()->getBody()->ApplyAngularImpulse(rotation, true);
+	velocity.Normalize(); //Normalisoidaan nopeusvektori
+	getOwner()->getComponent<ColliderComponent>()->getBody()->ApplyAngularImpulse(rotation, true); //Annetaan kulmaimpulssi rotationin mukaisesti.
 	getOwner()->getComponent<ColliderComponent>()->getBody()->ApplyForce(velocity, getOwner()->getComponent<ColliderComponent>()->getBody()->GetWorldCenter(), true);
+	//^Syötetään vektorin mukaisesti voima bodyn maailmakeskipisteelle.
 	
 }
 

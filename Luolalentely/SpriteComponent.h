@@ -4,14 +4,13 @@
 #include "GameComponent.h"
 
 
-
 class SpriteComponent : public GameComponent
 {
 public:
 	SpriteComponent(GameObject*, sf::Texture&);
 	~SpriteComponent();
 	void update(sf::Time &elapsed);
-	void draw(sf::RenderWindow& window);
+	void draw(sf::RenderWindow &window);
 private:
 	sf::Sprite sprite;
 };
