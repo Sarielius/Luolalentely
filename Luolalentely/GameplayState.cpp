@@ -14,19 +14,26 @@ GameplayState::GameplayState(Game *game) : GameState(game), world(b2Vec2(0.0f, 2
 	alus->pushComponent(new SpriteComponent(alus, textMgr.getRef("sprite")));
 	addGameObject(alus);
 
-	GameObject *wall = new GameObject(game);
-	wall->pushComponent(new WallColliderComponent(wall, world, sf::FloatRect(0.f, 0.f, 32.f, 32.f)));
-	wall->pushComponent(new WallSpriteComponent(wall, textMgr.getRef("wall")));
-	addGameObject(wall);
+	//GameObject *wall = new GameObject(game);
+	//wall->pushComponent(new WallColliderComponent(wall, world, sf::FloatRect(0.f, 0.f, 32.f, 32.f)));
+	//wall->pushComponent(new WallSpriteComponent(wall, textMgr.getRef("wall")));
+	//addGameObject(wall);
 
 	this->backGround.setTexture(this->textMgr.getRef("Background"));
 
-	//tilemap;
+	size_t height = 100;
+	size_t width = 100;
 
-	//for y < height;
-	//for x < width;
-	//if tilemap y x == wall; 
-	//create wall(y, x)
+	for (size_t y = 0; y < height; y++)
+	{
+		for (size_t x = 0; x < width; x++)
+		{
+			GameObject *newWall = new GameObject(game);
+			newWall->pushComponent(new WallColliderComponent(newWall, world, sf::FloatRect(x*64.f, y*64.f, 32.f, 32.f)));
+			newWall->pushComponent(new WallSpriteComponent(newWall, textMgr.getRef("wall")));
+			addGameObject(newWall);
+		}
+	}
 }
 
 

@@ -12,6 +12,7 @@ public:
 	~WallColliderComponent();
 	void update(sf::Time &elapsed);
 	void draw();
+	b2Body* getBody();
 private:
 	b2World &world;
 	b2Body *wallCollider;

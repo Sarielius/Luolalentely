@@ -30,3 +30,7 @@ void WallColliderComponent::draw()
 {
 	
 }
+b2Body *WallColliderComponent::getBody()
+{
+	return wallCollider;
+}
