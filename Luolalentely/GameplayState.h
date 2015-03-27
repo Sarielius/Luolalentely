@@ -15,6 +15,7 @@ public:
 	void draw(sf::RenderWindow&);
 	void addGameObject(GameObject*);
 	void loadTextures();
+	void loadTileMap(const std::string &path);
 private:
 	b2World world;
 	std::vector<GameObject*> gameObjects;

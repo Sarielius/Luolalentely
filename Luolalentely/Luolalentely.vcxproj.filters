@@ -63,9 +63,6 @@
     <ClCompile Include="Convert.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TileMap.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="WallColliderComponent.cpp">
       <Filter>Source Files\Component</Filter>
     </ClCompile>
@@ -107,14 +104,16 @@
     <ClInclude Include="Convert.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TileMap.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="WallColliderComponent.h">
       <Filter>Header Files\Component</Filter>
     </ClInclude>
     <ClInclude Include="WallSpriteComponent.h">
       <Filter>Header Files\Component</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="maps\tilemap1.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>
