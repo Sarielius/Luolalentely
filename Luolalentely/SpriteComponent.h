@@ -11,6 +11,7 @@ public:
 	~SpriteComponent();
 	void update(sf::Time &elapsed);
 	void draw(sf::RenderWindow &window);
+	sf::Sprite* getSprite();
 private:
 	sf::Sprite sprite;
 };

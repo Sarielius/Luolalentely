@@ -1,8 +1,8 @@
 #include "SpriteComponent.h"
 #include "Convert.h"
 #include "GameObject.h"
-#include "ColliderComponent.h"
-#define RADTODEG 57.295779513082320876f
+#include "CameraComponent.h"
+
 
 SpriteComponent::SpriteComponent(GameObject* g, sf::Texture &sprite) : GameComponent(g), sprite(sprite)
 { 
@@ -17,15 +17,17 @@ SpriteComponent::~SpriteComponent()
 
 void SpriteComponent::update(sf::Time &elapsed)
 {
-	// Asetetaan spriten asemaksi gameobjectin keskipiste. 
-	b2Vec2 pos = Convert::box2dToWorld(getOwner()->getComponent<ColliderComponent>()->getBody()->GetPosition());
-	sprite.setPosition(pos.x, pos.y);
-	
-	sprite.setRotation(getOwner()->getComponent<ColliderComponent>()->getBody()->GetAngle()*RADTODEG); 
-	//^Hakee bodyn kulma-arvon ja pyörittää spriteä sen mukaisesti.
 }
 
 void SpriteComponent::draw(sf::RenderWindow &window) //Piirtää spriten ikkunaan.
 {
+	sf::View view = getOwner()->getComponent<CameraComponent>()->getView();
+	view.setCenter(sprite.getPosition().x, sprite.getPosition().y);
+	window.setView(view);
 	window.draw(sprite);
+}
+
+sf::Sprite* SpriteComponent::getSprite()
+{
+	return &sprite;
 }

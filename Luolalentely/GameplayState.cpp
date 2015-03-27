@@ -1,6 +1,7 @@
 #include "GameplayState.h"
 #include "SpriteComponent.h"
 #include "PlayerInputComponent.h"
+#include "CameraComponent.h"
 #include "WallColliderComponent.h"
 #include "WallSpriteComponent.h"
 #include <fstream>
@@ -10,16 +11,19 @@
 GameplayState::GameplayState(Game *game) : GameState(game), world(b2Vec2(0.0f, 2.0f)) //Asetetaan worldin (x,y) painovoimille arvot.
 {
 	this->loadTextures();
-
-	GameObject *alus = new GameObject(game);
-	alus->pushComponent(new ColliderComponent(alus, world, sf::FloatRect(128.f, 128.f, 32.f, 32.f)));
-	alus->pushComponent(new PlayerInputComponent(alus));
-	alus->pushComponent(new SpriteComponent(alus, textMgr.getRef("sprite")));
-	addGameObject(alus);
-
 	this->backGround.setTexture(this->textMgr.getRef("Background"));
 
+	player1 = new GameObject(game);
+	player1->pushComponent(new SpriteComponent(player1, textMgr.getRef("sprite")));
+	player1->pushComponent(new ColliderComponent(player1, world, sf::FloatRect(128.f, 128.f, 32.f, 32.f)));
+	player1->pushComponent(new PlayerInputComponent(player1));
+	player1->pushComponent(new CameraComponent(player1));
+	addGameObject(player1);
+	
+	
 	loadTileMap("maps/tilemap1.txt");
+
+
 
 }
 
@@ -45,6 +49,7 @@ void GameplayState::update(sf::Time &elapsed)
 
 void GameplayState::draw(sf::RenderWindow& win)
 {
+	game->window.setView(game->window.getDefaultView());
 	game->window.draw(backGround); //Piirtää taustan.
 	for (auto &object : gameObjects) //Käy gameObjects vectorin läpi ja piirtää sen sisällön.
 	{
@@ -79,12 +84,19 @@ void GameplayState::loadTileMap(const std::string &path)
 
 			if (tile == 'X')
 			{
-				GameObject* wall = new GameObject(game);
+				GameObject *wall = new GameObject(game);
+				wall->pushComponent(new WallSpriteComponent(wall, textMgr.getRef("wall"), x*64.f, y*64.f));
 				wall->pushComponent(new WallColliderComponent(wall, world, sf::FloatRect(x*64.f, y*64.f, 32.f, 32.f)));
-				wall->pushComponent(new WallSpriteComponent(wall, textMgr.getRef("wall")));
 
 				addGameObject(wall);
 			}
+		/*	else if (tile == '.')
+			{
+				GameObject *wall = new GameObject(game);
+				wall->pushComponent(new WallSpriteComponent(wall, textMgr.getRef("empty"), x*64.f, y*64.f));
+				addGameObject(wall);
+			}*/
+			
 		}
 	}
 
@@ -96,4 +108,5 @@ void GameplayState::loadTextures()
 	textMgr.loadTexture("Background", "sprites/tausta.png"); //Backgroundille asetetaan spriteksi sprites kansiosta tausta.png
 	textMgr.loadTexture("sprite", "sprites/alus.png");
 	textMgr.loadTexture("wall", "sprites/wall.png");
+	textMgr.loadTexture("empty", "sprites/tyhja.png");
 }

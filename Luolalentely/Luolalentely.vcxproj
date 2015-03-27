@@ -71,6 +71,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CameraComponent.cpp" />
     <ClCompile Include="ColliderComponent.cpp" />
     <ClCompile Include="Convert.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -87,6 +88,7 @@
     <ClCompile Include="WallSpriteComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CameraComponent.h" />
     <ClInclude Include="ColliderComponent.h" />
     <ClInclude Include="Convert.h" />
     <ClInclude Include="Game.h" />

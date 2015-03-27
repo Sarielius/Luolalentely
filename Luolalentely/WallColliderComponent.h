@@ -16,6 +16,7 @@ public:
 private:
 	b2World &world;
 	b2Body *wallCollider;
+	sf::Sprite* sprite;
 };
 
 #endif

@@ -21,5 +21,7 @@ private:
 	std::vector<GameObject*> gameObjects;
 	TextureManager textMgr;
 	sf::Sprite backGround;
+
+	GameObject *player1;
 };
 #endif

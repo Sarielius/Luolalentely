@@ -4,6 +4,7 @@
 #include <SFML\Graphics.hpp>
 #include "GameComponent.h"
 
+
 class ColliderComponent : public GameComponent
 {
 public:
@@ -15,6 +16,7 @@ public:
 private:
 	b2Body *collider;
 	b2World &world;
+	sf::Sprite *sprite;
 };
 
 #endif

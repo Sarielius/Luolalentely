@@ -1,8 +1,17 @@
 #include "WallColliderComponent.h"
 #include "Convert.h"
+#include "WallSpriteComponent.h"
+#include "GameObject.h"
+#define RADTODEG 57.295779513082320876f
 
 WallColliderComponent::WallColliderComponent(GameObject* g, b2World &world, sf::FloatRect dimensions) : GameComponent(g), world(world)
 {
+	WallSpriteComponent *temp = getOwner()->getComponent<WallSpriteComponent>();
+	if (temp)
+	{
+		sprite = temp->getSprite();
+	}
+
 	b2BodyDef def;
 	def.fixedRotation = true;
 	def.type = b2_staticBody;
@@ -13,6 +22,8 @@ WallColliderComponent::WallColliderComponent(GameObject* g, b2World &world, sf::
 	b2FixtureDef FixtureDef;
 	FixtureDef.shape = &wallShape;
 	wallCollider->CreateFixture(&FixtureDef);
+
+	b2Vec2 pos = Convert::box2dToWorld(wallCollider->GetPosition());
 }
 
 
@@ -23,7 +34,13 @@ WallColliderComponent::~WallColliderComponent()
 
 void WallColliderComponent::update(sf::Time &elapsed)
 {
+	if (sprite)
+	{
+		b2Vec2 pos = Convert::box2dToWorld(wallCollider->GetPosition());
+		sprite->setPosition(pos.x, pos.y);
 
+		sprite->setRotation(wallCollider->GetAngle()*RADTODEG);
+	}
 }
 
 void WallColliderComponent::draw()

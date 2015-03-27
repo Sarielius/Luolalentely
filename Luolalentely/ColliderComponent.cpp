@@ -1,9 +1,17 @@
 #include "ColliderComponent.h"
+#include "SpriteComponent.h"
 #include "GameObject.h"
 #include "Convert.h"
+#define RADTODEG 57.295779513082320876f
 
-ColliderComponent::ColliderComponent(GameObject* g, b2World& world, sf::FloatRect dimensions) : GameComponent(g), world(world)
+ColliderComponent::ColliderComponent(GameObject* g, b2World& world, sf::FloatRect dimensions) : GameComponent(g), world(world), sprite(nullptr)
 {
+	SpriteComponent* temp = getOwner()->getComponent<SpriteComponent>();
+	if (temp)
+	{
+		sprite = temp->getSprite();
+	}
+
 	b2BodyDef def; //Luodaan uusi bodyDefinition.
 	def.fixedRotation = false; //True arvolla objekti ei pyöri voimien vaikutuksesta.
 	def.type = b2_dynamicBody; //Muutetaan tyyppi default staticista dynaamiseksi.
@@ -32,8 +40,13 @@ ColliderComponent::~ColliderComponent()
 
 void ColliderComponent::update(sf::Time &elapsed)
 {
-	
+	if (sprite)
+	{
+		b2Vec2 pos = Convert::box2dToWorld(collider->GetPosition());
+		sprite->setPosition(pos.x, pos.y);
 
+		sprite->setRotation(collider->GetAngle()*RADTODEG);
+	}
 }
 void ColliderComponent::draw()
 {
