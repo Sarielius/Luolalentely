@@ -51,7 +51,6 @@ void ColliderComponent::update(sf::Time &elapsed)
 void ColliderComponent::draw()
 {
 
-
 }
 
 b2Body* ColliderComponent::getBody()

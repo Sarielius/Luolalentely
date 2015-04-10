@@ -74,6 +74,7 @@
     <ClCompile Include="CameraComponent.cpp" />
     <ClCompile Include="ColliderComponent.cpp" />
     <ClCompile Include="Convert.cpp" />
+    <ClCompile Include="DrawManager.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameComponent.cpp" />
     <ClCompile Include="GameObject.cpp" />
@@ -91,6 +92,7 @@
     <ClInclude Include="CameraComponent.h" />
     <ClInclude Include="ColliderComponent.h" />
     <ClInclude Include="Convert.h" />
+    <ClInclude Include="DrawManager.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameComponent.h" />
     <ClInclude Include="GameObject.h" />

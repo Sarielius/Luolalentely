@@ -72,6 +72,9 @@
     <ClCompile Include="CameraComponent.cpp">
       <Filter>Source Files\Component</Filter>
     </ClCompile>
+    <ClCompile Include="DrawManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -115,6 +118,9 @@
     </ClInclude>
     <ClInclude Include="CameraComponent.h">
       <Filter>Header Files\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawManager.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

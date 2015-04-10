@@ -13,6 +13,8 @@ GameplayState::GameplayState(Game *game) : GameState(game), world(b2Vec2(0.0f, 2
 	this->loadTextures();
 	this->backGround.setTexture(this->textMgr.getRef("Background"));
 
+	loadTileMap("maps/tilemap1.txt");
+
 	player1 = new GameObject(game);
 	player1->pushComponent(new SpriteComponent(player1, textMgr.getRef("sprite")));
 	player1->pushComponent(new ColliderComponent(player1, world, sf::FloatRect(128.f, 128.f, 32.f, 32.f)));
@@ -20,11 +22,6 @@ GameplayState::GameplayState(Game *game) : GameState(game), world(b2Vec2(0.0f, 2
 	player1->pushComponent(new CameraComponent(player1));
 	addGameObject(player1);
 	
-	
-	loadTileMap("maps/tilemap1.txt");
-
-
-
 }
 
 
@@ -39,7 +36,7 @@ GameplayState::~GameplayState()
 
 void GameplayState::update(sf::Time &elapsed)
 {
-	world.Step(1.f / 60.f, 8, 30); //Päivitetään simulaatiota
+	world.Step(1.f / 60.f, 8, 3); //Päivitetään simulaatiota
 	for (auto &object : gameObjects) //Päivitetään koko gameObjects vektoria ajalla.
 	{
 		object->update(elapsed);
@@ -50,12 +47,16 @@ void GameplayState::update(sf::Time &elapsed)
 void GameplayState::draw(sf::RenderWindow& win)
 {
 	game->window.setView(game->window.getDefaultView());
+
 	game->window.draw(backGround); //Piirtää taustan.
+
+	game->window.setView(player1->getComponent<CameraComponent>()->getView());
+	// TODO: vaiha view pelaajan viewiksi.
+
 	for (auto &object : gameObjects) //Käy gameObjects vectorin läpi ja piirtää sen sisällön.
 	{
 		object->draw(win); //Käyttää gameObjectin omaa draw()ia.
 	}
-
 }
 
 void GameplayState::addGameObject(GameObject* gameObject)
@@ -90,12 +91,12 @@ void GameplayState::loadTileMap(const std::string &path)
 
 				addGameObject(wall);
 			}
-		/*	else if (tile == '.')
+			else if (tile == '.')
 			{
 				GameObject *wall = new GameObject(game);
 				wall->pushComponent(new WallSpriteComponent(wall, textMgr.getRef("empty"), x*64.f, y*64.f));
 				addGameObject(wall);
-			}*/
+			}
 			
 		}
 	}

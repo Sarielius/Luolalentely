@@ -21,9 +21,6 @@ void SpriteComponent::update(sf::Time &elapsed)
 
 void SpriteComponent::draw(sf::RenderWindow &window) //Piirtää spriten ikkunaan.
 {
-	sf::View view = getOwner()->getComponent<CameraComponent>()->getView();
-	view.setCenter(sprite.getPosition().x, sprite.getPosition().y);
-	window.setView(view);
 	window.draw(sprite);
 }
 
