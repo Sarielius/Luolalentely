@@ -15,7 +15,7 @@ void Game::run()
 {
 	sf::Clock clock; // Tehd‰‰n kello
 	init(); // K‰ynnist‰‰ pelin luomalla gameplaystaten
-	window.setFramerateLimit(60); // FPS lock
+	/*window.setFramerateLimit(60);*/ // FPS lock
 	while (window.isOpen()) // Looppi pyˆrii kun ikkuna on auki
 	{
 		sf::Event event; // Tehd‰‰n eventti

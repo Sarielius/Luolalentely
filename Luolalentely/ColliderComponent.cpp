@@ -38,7 +38,7 @@ ColliderComponent::ColliderComponent(GameObject* g, b2World& world, sf::FloatRec
 	b2FixtureDef FixtureDef;
 	FixtureDef.density = 0.1f;
 	FixtureDef.friction = 0.1f;
-	FixtureDef.restitution = 0.1f;
+	FixtureDef.restitution = 0.2f;
 
 	FixtureDef.shape = &Shape;
 	collider->CreateFixture(&FixtureDef);

@@ -22,11 +22,11 @@ void PlayerInputComponent::update(sf::Time &elapsed)
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
-		rotation = -0.015f;
+		rotation = -0.009f;
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
-		rotation = 0.015f; 
+		rotation = 0.009f; 
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) 
 	{ //Laskut nopeuden lisäämiseksi objektin kärjen suuntaan.
@@ -38,10 +38,10 @@ void PlayerInputComponent::update(sf::Time &elapsed)
 		getOwner()->getGame()->window.close();
 	}
 
-	velocity.Normalize(); //Normalisoidaan nopeusvektori
+	/*velocity.Normalize();*/ //Normalisoidaan nopeusvektori
 	getOwner()->getComponent<ColliderComponent>()->getBody()->ApplyAngularImpulse(rotation, true); //Annetaan kulmaimpulssi rotationin mukaisesti.
 	getOwner()->getComponent<ColliderComponent>()->getBody()->ApplyForce(velocity, getOwner()->getComponent<ColliderComponent>()->getBody()->GetWorldCenter(), true);
-	//^Syötetään vektorin mukaisesti voima bodyn maailmakeskipisteelle.
+	
 	
 }
 
