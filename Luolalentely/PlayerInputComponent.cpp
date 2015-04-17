@@ -13,7 +13,7 @@ PlayerInputComponent::~PlayerInputComponent()
 
 void PlayerInputComponent::update(sf::Time &elapsed)
 { 
-	const float speed = 20.f; //Asetetaan "pohja"nopeus
+	const float speed = 1.f; //Asetetaan "pohja"nopeus
 	float angle = getOwner()->getComponent<ColliderComponent>()->getBody()->GetAngle(); //Haetaan aluksen kulma.
 	float rotation = 0.f; //Alustetaan rotaatiovoima
 	
@@ -22,11 +22,11 @@ void PlayerInputComponent::update(sf::Time &elapsed)
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
-		rotation = -0.005f;
+		rotation = -0.015f;
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
-		rotation = 0.005f; 
+		rotation = 0.015f; 
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) 
 	{ //Laskut nopeuden lis‰‰miseksi objektin k‰rjen suuntaan.

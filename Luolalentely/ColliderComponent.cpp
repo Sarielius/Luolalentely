@@ -19,14 +19,26 @@ ColliderComponent::ColliderComponent(GameObject* g, b2World& world, sf::FloatRec
 	def.linearDamping = 0.2f; //Asetetaan nopeusvaimennukselle arvo. 
 	def.position = Convert::worldToBox2d(dimensions.left, dimensions.top); 
 	collider = world.CreateBody(&def); //Luodaan worldiin collider def:in perusteella.
+	
+	b2Vec2 vertices[3];
+
+	vertices[0].Set(0.0f, -1.0f * Convert::worldToBox2d(dimensions.height));
+
+	vertices[1].Set(0.8f * Convert::worldToBox2d(dimensions.width), 0.8f * Convert::worldToBox2d(dimensions.height));
+
+	vertices[2].Set(-0.8f * Convert::worldToBox2d(dimensions.width), 0.8f * Convert::worldToBox2d(dimensions.height));
+
+	int32 count = 3;
+	
 	b2PolygonShape Shape;
+
+	Shape.Set(vertices, count);
 	
-	Shape.SetAsBox(Convert::worldToBox2d(dimensions.width /2.f ), Convert::worldToBox2d(dimensions.height / 2.f));
-	
+
 	b2FixtureDef FixtureDef;
 	FixtureDef.density = 0.1f;
 	FixtureDef.friction = 0.1f;
-	//FixtureDef.restitution = 0.f;
+	FixtureDef.restitution = 0.1f;
 
 	FixtureDef.shape = &Shape;
 	collider->CreateFixture(&FixtureDef);
@@ -48,6 +60,7 @@ void ColliderComponent::update(sf::Time &elapsed)
 		sprite->setRotation(collider->GetAngle()*RADTODEG);
 	}
 }
+
 void ColliderComponent::draw()
 {
 
@@ -57,5 +70,3 @@ b2Body* ColliderComponent::getBody()
 {
 	return collider;
 }
-
-//	ColliderComponent* asd = g->getComponent<ColliderComponent>();
