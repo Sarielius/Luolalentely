@@ -6,7 +6,7 @@
 #include "WallSpriteComponent.h"
 #include <fstream>
 #include <cassert>
-
+#include <iostream>
 
 GameplayState::GameplayState(Game *game) : GameState(game), world(b2Vec2(0.0f, 2.0f)) //Asetetaan worldin (x,y) painovoimille arvot.
 {
@@ -21,7 +21,7 @@ GameplayState::GameplayState(Game *game) : GameState(game), world(b2Vec2(0.0f, 2
 	player1->pushComponent(new PlayerInputComponent(player1));
 	player1->pushComponent(new CameraComponent(player1));
 	addGameObject(player1);
-	
+	std::cout << "Player object created." << std::endl;
 }
 
 
@@ -102,6 +102,7 @@ void GameplayState::loadTileMap(const std::string &path)
 	}
 
 	file.close();
+	std::cout << "Tilemap loaded." << std::endl;
 }
 
 void GameplayState::loadTextures() 
@@ -110,4 +111,5 @@ void GameplayState::loadTextures()
 	textMgr.loadTexture("sprite", "sprites/alus.png");
 	textMgr.loadTexture("wall", "sprites/wall.png");
 	textMgr.loadTexture("empty", "sprites/tyhja.png");
+	std::cout << "Textures loaded." << std::endl;
 }

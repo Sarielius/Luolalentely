@@ -13,7 +13,7 @@ PlayerInputComponent::~PlayerInputComponent()
 
 void PlayerInputComponent::update(sf::Time &elapsed)
 { 
-	const float speed = 1.f; //Asetetaan "pohja"nopeus
+	const float speed = 1.0f; //Asetetaan "pohja"nopeus
 	float angle = getOwner()->getComponent<ColliderComponent>()->getBody()->GetAngle(); //Haetaan aluksen kulma.
 	float rotation = 0.f; //Alustetaan rotaatiovoima
 	
@@ -37,8 +37,8 @@ void PlayerInputComponent::update(sf::Time &elapsed)
 	{
 		getOwner()->getGame()->window.close();
 	}
+	
 
-	/*velocity.Normalize();*/ //Normalisoidaan nopeusvektori
 	getOwner()->getComponent<ColliderComponent>()->getBody()->ApplyAngularImpulse(rotation, true); //Annetaan kulmaimpulssi rotationin mukaisesti.
 	getOwner()->getComponent<ColliderComponent>()->getBody()->ApplyForce(velocity, getOwner()->getComponent<ColliderComponent>()->getBody()->GetWorldCenter(), true);
 	
