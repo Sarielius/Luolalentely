@@ -45,6 +45,7 @@ void GameStateManager::pop()
 {
 	if (states.size() != 0) //Poistaa perimmäisen staten.
 	{
+		delete states.back();
 		states.erase(states.end() - 1);
 	}
 

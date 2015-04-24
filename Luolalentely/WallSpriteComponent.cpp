@@ -1,6 +1,4 @@
 #include "WallSpriteComponent.h"
-#include <Box2D\Box2D.h>
-#include "Convert.h"
 #include "GameObject.h"
 #include "WallColliderComponent.h"
 

@@ -19,6 +19,8 @@ ColliderComponent::ColliderComponent(GameObject* g, b2World& world, sf::FloatRec
 	def.linearDamping = 0.2f; //Asetetaan nopeusvaimennukselle arvo. 
 	def.position = Convert::worldToBox2d(dimensions.left, dimensions.top); 
 	collider = world.CreateBody(&def); //Luodaan worldiin collider def:in perusteella.
+
+	collider->SetUserData(g);
 	
 	b2Vec2 vertices[3];
 

@@ -19,7 +19,5 @@ public:
 
 private:
 	std::vector<GameState*> states;
-
-
 };
 #endif

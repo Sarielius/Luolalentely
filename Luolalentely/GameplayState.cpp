@@ -4,18 +4,22 @@
 #include "CameraComponent.h"
 #include "WallColliderComponent.h"
 #include "WallSpriteComponent.h"
+#include "GoalComponent.h"
+#include "GoalSpriteComponent.h"
 #include <fstream>
 #include <cassert>
 #include <iostream>
 
 GameplayState::GameplayState(Game *game) : GameState(game), world(b2Vec2(0.0f, 2.0f)) //Asetetaan worldin (x,y) painovoimille arvot.
 {
+	world.SetContactListener(&handler);
 	this->loadTextures();
 	this->backGround.setTexture(this->textMgr.getRef("Background"));
 
 	loadTileMap("maps/tilemap1.txt");
 
 	player1 = new GameObject(game);
+	player1->type = TYPES::PLAYER;
 	player1->pushComponent(new SpriteComponent(player1, textMgr.getRef("sprite")));
 	player1->pushComponent(new ColliderComponent(player1, world, sf::FloatRect(128.f, 128.f, 32.f, 32.f)));
 	player1->pushComponent(new PlayerInputComponent(player1));
@@ -86,6 +90,7 @@ void GameplayState::loadTileMap(const std::string &path)
 			if (tile == 'X')
 			{
 				GameObject *wall = new GameObject(game);
+				wall->type = TYPES::WALL;
 				wall->pushComponent(new WallSpriteComponent(wall, textMgr.getRef("wall"), x*64.f, y*64.f));
 				wall->pushComponent(new WallColliderComponent(wall, world, sf::FloatRect(x*64.f, y*64.f, 32.f, 32.f)));
 
@@ -96,6 +101,14 @@ void GameplayState::loadTileMap(const std::string &path)
 				GameObject *wall = new GameObject(game);
 				wall->pushComponent(new WallSpriteComponent(wall, textMgr.getRef("empty"), x*64.f, y*64.f));
 				addGameObject(wall);
+			}
+			else if (tile == 'G')
+			{
+				GameObject *goal = new GameObject(game);
+				goal->type = TYPES::GOAL;
+				goal->pushComponent(new GoalSpriteComponent(goal, textMgr.getRef("goal"), x*64.f, y*64.f));
+				goal->pushComponent(new GoalComponent(goal, world, sf::FloatRect(x*64.f, y*64.f, 32.f, 32.f)));
+				addGameObject(goal);
 			}
 			
 		}
@@ -111,5 +124,6 @@ void GameplayState::loadTextures()
 	textMgr.loadTexture("sprite", "sprites/alus.png");
 	textMgr.loadTexture("wall", "sprites/wall.png");
 	textMgr.loadTexture("empty", "sprites/tyhja.png");
+	textMgr.loadTexture("goal", "sprites/goal.png");
 	std::cout << "Textures loaded." << std::endl;
 }

@@ -13,6 +13,7 @@ public:
 	void run();
 	void init();
 	sf::RenderWindow window;
+	GameStateManager* getStateManager()  { return &stateManager; }
 private:
 	GameStateManager stateManager;
 };

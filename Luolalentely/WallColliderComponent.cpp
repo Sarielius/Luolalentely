@@ -19,9 +19,11 @@ WallColliderComponent::WallColliderComponent(GameObject* g, b2World &world, sf::
 	wallCollider = world.CreateBody(&def);
 	b2PolygonShape wallShape;
 	wallShape.SetAsBox(Convert::worldToBox2d(dimensions.width), Convert::worldToBox2d(dimensions.height));
-	b2FixtureDef FixtureDef;
-	FixtureDef.shape = &wallShape;
-	wallCollider->CreateFixture(&FixtureDef);
+	b2FixtureDef fixtureDef;
+	fixtureDef.shape = &wallShape;
+	wallCollider->CreateFixture(&fixtureDef);
+
+	wallCollider->SetUserData(g);
 
 	b2Vec2 pos = Convert::box2dToWorld(wallCollider->GetPosition());
 }
@@ -47,6 +49,7 @@ void WallColliderComponent::draw()
 {
 	
 }
+
 b2Body *WallColliderComponent::getBody()
 {
 	return wallCollider;

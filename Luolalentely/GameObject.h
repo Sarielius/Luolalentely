@@ -4,6 +4,12 @@
 #include "GameComponent.h"
 #include "Game.h"
 
+enum TYPES
+{
+	PLAYER = 0,
+	WALL,
+	GOAL
+};
 
 class GameObject
 {
@@ -27,6 +33,7 @@ public:
 		return nullptr;
 	}
 
+	TYPES type;
 
 private:
 	std::vector<GameComponent*> components;

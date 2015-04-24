@@ -5,6 +5,7 @@
 #include "GameObject.h"
 #include "TextureManager.h"
 #include "Game.h"
+#include "CollisionHandler.h"
 
 class GameplayState :public GameState
 {
@@ -17,6 +18,7 @@ public:
 	void loadTextures();
 	void loadTileMap(const std::string &path);
 private:
+	CollisionHandler handler;
 	b2World world;
 	std::vector<GameObject*> gameObjects;
 	TextureManager textMgr;
