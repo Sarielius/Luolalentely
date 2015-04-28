@@ -1,7 +1,10 @@
 #ifndef MENUSTATE_H
 #define MENUSTATE_H
-
+#include <SFML\Graphics.hpp>
 #include "GameState.h"
+#include "TextureManager.h"
+
+
 
 class Game;
 
@@ -13,8 +16,11 @@ public:
 
 	void update(sf::Time &elapsed);
 	void draw(sf::RenderWindow& win);
+	void loadTextures();
 
-	Game* game;
+private:
+	sf::Sprite menuBackGround;
+	TextureManager textMgr;
 };
 
 #endif

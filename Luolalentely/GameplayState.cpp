@@ -14,7 +14,7 @@ GameplayState::GameplayState(Game *game) : GameState(game), world(b2Vec2(0.0f, 2
 {
 	world.SetContactListener(&handler);
 	this->loadTextures();
-	this->backGround.setTexture(this->textMgr.getRef("Background"));
+	this->backGround.setTexture(this->textMgr.getRef("background"));
 
 	loadTileMap("maps/tilemap1.txt");
 
@@ -120,7 +120,7 @@ void GameplayState::loadTileMap(const std::string &path)
 
 void GameplayState::loadTextures() 
 {
-	textMgr.loadTexture("Background", "sprites/tausta.png"); //Backgroundille asetetaan spriteksi sprites kansiosta tausta.png
+	textMgr.loadTexture("background", "sprites/tausta.png"); //Backgroundille asetetaan spriteksi sprites kansiosta tausta.png
 	textMgr.loadTexture("sprite", "sprites/alus.png");
 	textMgr.loadTexture("wall", "sprites/wall.png");
 	textMgr.loadTexture("empty", "sprites/tyhja.png");

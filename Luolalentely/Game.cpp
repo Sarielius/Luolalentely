@@ -1,5 +1,6 @@
 #include "Game.h"
 #include "GameplayState.h"
+#include "MenuState.h"
 
 
 Game::Game(int w, int h) : window(sf::VideoMode(w,h),"Cave Explorer") // Asettaa ikkunan kooksi saadut arvot ja laittaa kivan nimen yläkulmaan

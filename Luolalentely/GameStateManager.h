@@ -4,6 +4,7 @@
 #include "GameState.h"
 #include "TextureManager.h"
 #include <SFML/Graphics.hpp>
+#include <functional>
 
 class GameStateManager
 {
@@ -16,8 +17,10 @@ public:
 	void draw(sf::RenderWindow&);
 	void change(GameState*);
 
+	void doNextUpdate(std::function< void(void)> action);
 
 private:
+	std::vector<std::function<void(void)>> pendingActions;
 	std::vector<GameState*> states;
 };
 #endif

@@ -84,7 +84,7 @@
     <ClCompile Include="MenuState.cpp">
       <Filter>Source Files\State</Filter>
     </ClCompile>
-    <ClCompile Include="DeadState.cpp">
+    <ClCompile Include="PauseState.cpp">
       <Filter>Source Files\State</Filter>
     </ClCompile>
   </ItemGroup>
@@ -140,10 +140,10 @@
     <ClInclude Include="CollisionHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DeadState.h">
+    <ClInclude Include="MenuState.h">
       <Filter>Header Files\State</Filter>
     </ClInclude>
-    <ClInclude Include="MenuState.h">
+    <ClInclude Include="PauseState.h">
       <Filter>Header Files\State</Filter>
     </ClInclude>
   </ItemGroup>

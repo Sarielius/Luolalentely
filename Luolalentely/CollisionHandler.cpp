@@ -26,6 +26,11 @@ void CollisionHandler::EndContact(b2Contact* contact)
 void CollisionHandler::handleCollision(GameObject* objectA, GameObject* objectB)
 {
 	if (objectA->type == TYPES::PLAYER && objectB->type == TYPES::GOAL || objectB->type == TYPES::PLAYER && objectA->type == GOAL)
-		objectA->getGame()->window.close;
-		/*objectA->getGame()->getStateManager()->change(new MenuState(objectA->getGame()));*/
+	{
+		objectA->getGame()->getStateManager()->doNextUpdate([objectA]() 
+		{
+			objectA->getGame()->getStateManager()->change(new MenuState(objectA->getGame()));
+		});
+		
+	}
 }

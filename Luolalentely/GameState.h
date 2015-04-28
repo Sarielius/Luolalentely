@@ -8,7 +8,7 @@ class GameState
 {
 public:
 	GameState(Game *game);
-	~GameState();
+	virtual ~GameState();
 	virtual void update(sf::Time &elapsed) = 0;
 	virtual void draw(sf::RenderWindow& win) = 0;
 protected:

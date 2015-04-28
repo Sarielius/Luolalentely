@@ -25,6 +25,12 @@ void GameStateManager::update(sf::Time &elapsed) //P‰ivitet‰‰n states vektori.
 		states.back()->update(elapsed);
 	}
 
+	for (int i = pendingActions.size() - 1; i >= 0; i--) 
+	{
+		pendingActions[i]();
+	}
+
+	pendingActions.clear();
 }
 
 void GameStateManager::draw(sf::RenderWindow& win) //Piirret‰‰n states vektorin per‰lt‰ seuraava state.
@@ -55,4 +61,9 @@ void GameStateManager::change(GameState* state) //Poistaa staten ja "vaihtaa" ti
 {
 	pop(); 
 	pushState(state);
+}
+
+void GameStateManager::doNextUpdate(std::function< void(void)> action)
+{
+	pendingActions.push_back(action);
 }

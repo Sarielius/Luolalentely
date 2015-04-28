@@ -14,6 +14,7 @@ GameObject::~GameObject() // Tuhoaa components vektorin sisällön
 	}
 
 	components.clear();
+
 }
 
 void GameObject::update(sf::Time &elapsed) // Päivittää koko vektorin komponentteja.
