@@ -1,9 +1,10 @@
 #include "Game.h"
 #include "GameplayState.h"
 #include "MenuState.h"
+#include "PauseState.h"
 
 
-Game::Game(int w, int h) : window(sf::VideoMode(w,h),"Cave Explorer") // Asettaa ikkunan kooksi saadut arvot ja laittaa kivan nimen yl‰kulmaan
+Game::Game(int w, int h) : window(sf::VideoMode(w,h),"Cave Explorer"), paused(false) // Asettaa ikkunan kooksi saadut arvot ja laittaa kivan nimen yl‰kulmaan
 {
 }
 
@@ -24,6 +25,26 @@ void Game::run()
 		{
 			if (event.type == sf::Event::Closed) // Jos ikkuna suljetaan, ohjelma sulkeutuu
 				window.close();
+			else if (event.type == sf::Event::KeyPressed)
+			{
+				if (event.key.code == sf::Keyboard::Space)
+				{
+					if (paused)
+					{
+						stateManager.pop();
+						paused = false;
+					}
+					else
+					{
+						stateManager.pushState(new PauseState(this));
+						paused = true;
+					}
+				}
+				if (event.key.code == sf::Keyboard::Escape)
+				{
+					window.close();
+				}
+			}
 		}
 		sf::Time elapsed = clock.restart(); // clock.restart() palauttaa kellon arvon eli ajan ja resetoi sen.
 		window.clear(sf::Color::Black); // Ruutu k‰y joka framen v‰liss‰ mustana, eli paint it black edellisen framen p‰‰lle.
@@ -46,5 +67,5 @@ void Game::draw(sf::RenderWindow& win)
 
 void Game::init()
 {
-	stateManager.pushState(new GameplayState(this));
+	stateManager.pushState(new MenuState(this));
 }

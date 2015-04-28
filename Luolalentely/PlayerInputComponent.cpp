@@ -1,6 +1,8 @@
 #include "PlayerInputComponent.h"
 #include "GameObject.h"
 #include "ColliderComponent.h"
+#include "GameplayState.h"
+
 #define DEGTORAD 0.0174532925199432957f
 #define RADTODEG 57.295779513082320876f
 
@@ -33,10 +35,15 @@ void PlayerInputComponent::update(sf::Time &elapsed)
 		velocity.x = sin(angle) * speed ;
 		velocity.y = cos(angle) * -speed ;
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) //Escapella suljetaan ikkuna
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::R)) //Reset
 	{
-		getOwner()->getGame()->window.close();
+		GameObject *owner = getOwner();
+		owner->getGame()->getStateManager()->doNextUpdate([owner]()
+		{
+			owner->getGame()->getStateManager()->change(new GameplayState(owner->getGame()));
+		});
 	}
+
 	
 
 	getOwner()->getComponent<ColliderComponent>()->getBody()->ApplyAngularImpulse(rotation, true); //Annetaan kulmaimpulssi rotationin mukaisesti.

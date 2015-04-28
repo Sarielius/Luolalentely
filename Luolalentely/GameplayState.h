@@ -13,7 +13,7 @@ public:
 	GameplayState(Game *game);
 	~GameplayState();
 	void update(sf::Time &elapsed);
-	void draw(sf::RenderWindow&);
+	void draw(sf::RenderWindow &win);
 	void addGameObject(GameObject*);
 	void loadTextures();
 	void loadTileMap(const std::string &path);

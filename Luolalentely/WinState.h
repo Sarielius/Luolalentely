@@ -1,5 +1,5 @@
-#ifndef MENUSTATE_H
-#define MENUSTATE_H
+#ifndef WINSTATE_H
+#define WINSTATE_H
 #include <SFML\Graphics.hpp>
 #include "GameState.h"
 #include "TextureManager.h"
@@ -7,18 +7,18 @@
 
 class Game;
 
-class MenuState : public GameState
+class WinState : public GameState
 {
 public:
-	MenuState(Game *game);
-	~MenuState();
+	WinState(Game *game);
+	~WinState();
 
 	void update(sf::Time &elapsed);
 	void draw(sf::RenderWindow &win);
 	void loadTextures();
-
+	
 private:
-	sf::Sprite menuBackGround;
+	sf::Sprite victoryScreen;
 	TextureManager textMgr;
 };
 

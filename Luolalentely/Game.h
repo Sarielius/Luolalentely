@@ -16,5 +16,6 @@ public:
 	GameStateManager* getStateManager()  { return &stateManager; }
 private:
 	GameStateManager stateManager;
+	bool paused;
 };
 #endif

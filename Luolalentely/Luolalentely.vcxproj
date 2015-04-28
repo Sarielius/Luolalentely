@@ -96,6 +96,7 @@
     <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="WallColliderComponent.cpp" />
     <ClCompile Include="WallSpriteComponent.cpp" />
+    <ClCompile Include="WinState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CameraComponent.h" />
@@ -117,6 +118,7 @@
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="WallColliderComponent.h" />
     <ClInclude Include="WallSpriteComponent.h" />
+    <ClInclude Include="WinState.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="maps\tilemap1.txt" />

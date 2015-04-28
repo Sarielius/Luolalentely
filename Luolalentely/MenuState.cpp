@@ -3,7 +3,6 @@
 #include "GameplayState.h"
 
 
-
 MenuState::MenuState(Game* game) : GameState(game)
 {
 	this->loadTextures();
@@ -19,9 +18,9 @@ void MenuState::update(sf::Time &elapsed)
 {
 	/*game->getStateManager()->change(new GameplayState(game));*/
 
-	Game* game = this->game;
+	Game *game = this->game;
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
 	{
 		game->getStateManager()->doNextUpdate([game]()
 		{
@@ -41,5 +40,5 @@ void MenuState::draw(sf::RenderWindow& win)
 
 void MenuState::loadTextures()
 {
-	textMgr.loadTexture("menubackground", "sprites/winner.png");
+	textMgr.loadTexture("menubackground", "sprites/menu.png");
 }

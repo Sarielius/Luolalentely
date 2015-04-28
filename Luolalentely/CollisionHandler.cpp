@@ -1,5 +1,5 @@
 #include "CollisionHandler.h"
-#include "MenuState.h"
+#include "WinState.h"
 
 
 CollisionHandler::CollisionHandler()
@@ -29,7 +29,7 @@ void CollisionHandler::handleCollision(GameObject* objectA, GameObject* objectB)
 	{
 		objectA->getGame()->getStateManager()->doNextUpdate([objectA]() 
 		{
-			objectA->getGame()->getStateManager()->change(new MenuState(objectA->getGame()));
+			objectA->getGame()->getStateManager()->change(new WinState(objectA->getGame()));
 		});
 		
 	}
