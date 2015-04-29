@@ -18,7 +18,7 @@ void PauseState::update(sf::Time &elapsed)
 {
 	Game *game = this->game;
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::R))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
 	{
 		game->getStateManager()->doNextUpdate([game]()
 		{

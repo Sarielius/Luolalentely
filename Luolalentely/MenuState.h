@@ -18,7 +18,9 @@ public:
 	void loadTextures();
 
 private:
-	sf::Sprite menuBackGround;
+	sf::Sprite menuBackGround1;
+	sf::Sprite menuBackGround2;
+	int selection;
 	TextureManager textMgr;
 };
 

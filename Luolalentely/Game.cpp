@@ -40,10 +40,6 @@ void Game::run()
 						paused = true;
 					}
 				}
-				if (event.key.code == sf::Keyboard::Escape)
-				{
-					window.close();
-				}
 			}
 		}
 		sf::Time elapsed = clock.restart(); // clock.restart() palauttaa kellon arvon eli ajan ja resetoi sen.
