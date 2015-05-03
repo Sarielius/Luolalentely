@@ -2,9 +2,7 @@
 
 int main()
 {
-	Game game(1280, 720); // Gamen konstruktorin mukaisesti annetaan kaksi arvoa jotka ovat ikkunan koko.
-	game.run(); // K‰ynnistet‰‰n peli
+	Game game(1280, 720); // Window size
+	game.run(); // Starts the game
 	return 0;
 }
-
-//https://www.binpress.com/tutorial/creating-a-city-building-game-with-sfml-part-1-state-manager/123

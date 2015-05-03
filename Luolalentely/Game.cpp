@@ -4,7 +4,7 @@
 #include "PauseState.h"
 
 
-Game::Game(int w, int h) : window(sf::VideoMode(w,h),"Cave Explorer"), paused(false) // Asettaa ikkunan kooksi saadut arvot ja laittaa kivan nimen yl‰kulmaan
+Game::Game(int w, int h) : window(sf::VideoMode(w,h),"Cave Explorer"), paused(false) // Window size and name
 {
 }
 
@@ -15,19 +15,21 @@ Game::~Game()
 
 void Game::run()
 {
-	sf::Clock clock; // Tehd‰‰n kello
-	init(); // K‰ynnist‰‰ pelin luomalla gameplaystaten
+	sf::Clock clock; 
+	init(); // Initialization
 	/*window.setFramerateLimit(60);*/ // FPS lock
-	while (window.isOpen()) // Looppi pyˆrii kun ikkuna on auki
+	while (window.isOpen()) // Main loop
 	{
-		sf::Event event; // Tehd‰‰n eventti
-		while (window.pollEvent(event)) // Tarkistaa eventin tyyppi‰ koko ajan.
+		sf::Event event; 
+		while (window.pollEvent(event)) // Event polling
 		{
-			if (event.type == sf::Event::Closed) // Jos ikkuna suljetaan, ohjelma sulkeutuu
+			if (event.type == sf::Event::Closed) // Loop closes with the window
+			{
 				window.close();
+			}
 			else if (event.type == sf::Event::KeyPressed)
 			{
-				if (event.key.code == sf::Keyboard::Space)
+				if (event.key.code == sf::Keyboard::Space) // "Global" pause
 				{
 					if (paused)
 					{
@@ -44,10 +46,10 @@ void Game::run()
 		}
 		sf::Time elapsed = clock.restart(); // clock.restart() palauttaa kellon arvon eli ajan ja resetoi sen.
 		window.clear(sf::Color::Black); // Ruutu k‰y joka framen v‰liss‰ mustana, eli paint it black edellisen framen p‰‰lle.
-		update(elapsed); // P‰ivitet‰‰n ajalla.
-		draw(window); // Piirt‰‰ kaiken ikkunaan.
-		window.display(); // N‰ytt‰‰ k‰ytt‰j‰lle ikkunassa stuffii.
-	} // Rinse and repeat kunnes ikkuna suljetaan.
+		update(elapsed); // Updates everything
+		draw(window); // Draws everything
+		window.display(); // Displays current drawn objects
+	} 
 }
 
 void Game::update(sf::Time &elapsed)

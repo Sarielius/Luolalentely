@@ -16,7 +16,6 @@ CameraComponent::~CameraComponent()
 void CameraComponent::update(sf::Time &elapsed)
 {
 	b2Vec2 pos =  Convert::box2dToWorld(getOwner()->getComponent<ColliderComponent>()->getBody()->GetPosition());
-	/*sf::Vector2f pos = getOwner()->getComponent<SpriteComponent>()->getSprite()->getPosition();*/
 	view.setCenter(pos.x, pos.y);
 }
 

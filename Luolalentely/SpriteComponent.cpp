@@ -6,7 +6,7 @@
 
 SpriteComponent::SpriteComponent(GameObject* g, sf::Texture &sprite) : GameComponent(g), sprite(sprite)
 { 
-	//Asetetaan spriten akselikeskipiste itse keskipisteeseen.
+	// Sets the sprite's origin to the middle of the texture
 	this->sprite.setOrigin(sprite.getSize().x / 2, sprite.getSize().y / 2); 
 }
 
@@ -19,7 +19,7 @@ void SpriteComponent::update(sf::Time &elapsed)
 {
 }
 
-void SpriteComponent::draw(sf::RenderWindow &window) //Piirt‰‰ spriten ikkunaan.
+void SpriteComponent::draw(sf::RenderWindow &window) 
 {
 	window.draw(sprite);
 }

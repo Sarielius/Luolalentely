@@ -40,8 +40,8 @@ GameplayState::~GameplayState()
 
 void GameplayState::update(sf::Time &elapsed)
 {
-	world.Step(1.f / 60.f, 8, 3); //P‰ivitet‰‰n simulaatiota
-	for (auto &object : gameObjects) //P‰ivitet‰‰n koko gameObjects vektoria ajalla.
+	world.Step(1.f / 60.f, 8, 3); // World update values
+	for (auto &object : gameObjects) // Updates all gameobjects
 	{
 		object->update(elapsed);
 	}
@@ -52,20 +52,19 @@ void GameplayState::draw(sf::RenderWindow& win)
 {
 	game->window.setView(game->window.getDefaultView());
 
-	game->window.draw(backGround); //Piirt‰‰ taustan.
+	game->window.draw(backGround); 
 
 	game->window.setView(player1->getComponent<CameraComponent>()->getView());
-	// TODO: vaiha view pelaajan viewiksi.
 
-	for (auto &object : gameObjects) //K‰y gameObjects vectorin l‰pi ja piirt‰‰ sen sis‰llˆn.
+	for (auto &object : gameObjects) 
 	{
-		object->draw(win); //K‰ytt‰‰ gameObjectin omaa draw()ia.
+		object->draw(win); // Draws all gameobjects
 	}
 }
 
 void GameplayState::addGameObject(GameObject* gameObject)
 {
-	gameObjects.push_back(gameObject); //Lis‰‰ gameObjects vektoriin gameObjekteja.
+	gameObjects.push_back(gameObject); 
 }
 
 void GameplayState::loadTileMap(const std::string &path)
@@ -120,7 +119,7 @@ void GameplayState::loadTileMap(const std::string &path)
 
 void GameplayState::loadTextures() 
 {
-	textMgr.loadTexture("background", "sprites/tausta.png"); //Backgroundille asetetaan spriteksi sprites kansiosta tausta.png
+	textMgr.loadTexture("background", "sprites/tausta.png"); 
 	textMgr.loadTexture("sprite", "sprites/alus.png");
 	textMgr.loadTexture("wall", "sprites/wall.png");
 	textMgr.loadTexture("empty", "sprites/tyhja.png");

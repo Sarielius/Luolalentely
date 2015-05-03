@@ -31,6 +31,5 @@ void CollisionHandler::handleCollision(GameObject* objectA, GameObject* objectB)
 		{
 			objectA->getGame()->getStateManager()->change(new WinState(objectA->getGame()));
 		});
-		
 	}
 }
