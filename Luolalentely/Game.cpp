@@ -17,7 +17,7 @@ void Game::run()
 {
 	sf::Clock clock; 
 	init(); // Initialization
-	/*window.setFramerateLimit(60);*/ // FPS lock
+	window.setFramerateLimit(60); // FPS lock
 	while (window.isOpen()) // Main loop
 	{
 		sf::Event event; 

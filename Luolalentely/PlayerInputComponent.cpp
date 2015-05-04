@@ -15,7 +15,7 @@ PlayerInputComponent::~PlayerInputComponent()
 
 void PlayerInputComponent::update(sf::Time &elapsed)
 { 
-	const float speed = 1.0f; // Base speed
+	const float speed = 4.0f; // Base speed
 	float angle = getOwner()->getComponent<ColliderComponent>()->getBody()->GetAngle(); //Haetaan aluksen kulma.
 	float rotation = 0.f; // Base rotation
 	
@@ -24,11 +24,11 @@ void PlayerInputComponent::update(sf::Time &elapsed)
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
-		rotation = -0.009f;
+		rotation = -0.0275f;
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
-		rotation = 0.009f; 
+		rotation = 0.0275f; 
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) // Directional force towards the ship's tip
 	{ 

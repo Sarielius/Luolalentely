@@ -15,8 +15,8 @@ ColliderComponent::ColliderComponent(GameObject* g, b2World& world, sf::FloatRec
 	b2BodyDef def;
 	def.fixedRotation = false; 
 	def.type = b2_dynamicBody; // Change from default static
-	def.angularDamping = 5.f; 
-	def.linearDamping = 0.2f; 
+	def.angularDamping = 8.f; 
+	def.linearDamping = 0.7f; 
 	def.position = Convert::worldToBox2d(dimensions.left, dimensions.top); 
 	collider = world.CreateBody(&def); // Object creation in world
 

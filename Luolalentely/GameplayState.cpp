@@ -10,7 +10,7 @@
 #include <cassert>
 #include <iostream>
 
-GameplayState::GameplayState(Game *game) : GameState(game), world(b2Vec2(0.0f, 2.0f)) //Asetetaan worldin (x,y) painovoimille arvot.
+GameplayState::GameplayState(Game *game) : GameState(game), world(b2Vec2(0.0f, 8.0f)) //Asetetaan worldin (x,y) painovoimille arvot.
 {
 	world.SetContactListener(&handler);
 	this->loadTextures();
