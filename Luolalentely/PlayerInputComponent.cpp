@@ -16,7 +16,7 @@ PlayerInputComponent::~PlayerInputComponent()
 void PlayerInputComponent::update(sf::Time &elapsed)
 { 
 	const float speed = 4.0f; // Base speed
-	float angle = getOwner()->getComponent<ColliderComponent>()->getBody()->GetAngle(); //Haetaan aluksen kulma.
+	float angle = getOwner()->getComponent<ColliderComponent>()->getBody()->GetAngle();
 	float rotation = 0.f; // Base rotation
 	
 

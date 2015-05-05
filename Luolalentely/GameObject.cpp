@@ -26,7 +26,7 @@ void GameObject::update(sf::Time &elapsed) // Updates all components
 
 }
 
-void GameObject::draw(sf::RenderWindow& win) // Piirt‰‰ components vektorin sis‰llˆn ikkunaan.
+void GameObject::draw(sf::RenderWindow& win) // Draws the content of the component vector
 {
 	for (size_t i = 0; i < components.size(); i++) {
 		components[i]->draw(win);
@@ -34,7 +34,7 @@ void GameObject::draw(sf::RenderWindow& win) // Piirt‰‰ components vektorin sis‰
 	
 }
 
-void GameObject::pushComponent(GameComponent* compo) // Lis‰‰ vektoriin komponentteja. 
+void GameObject::pushComponent(GameComponent* compo) // Adds components
 {
 	components.push_back(compo);
 }

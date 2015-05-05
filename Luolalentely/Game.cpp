@@ -44,8 +44,8 @@ void Game::run()
 				}
 			}
 		}
-		sf::Time elapsed = clock.restart(); // clock.restart() palauttaa kellon arvon eli ajan ja resetoi sen.
-		window.clear(sf::Color::Black); // Ruutu k‰y joka framen v‰liss‰ mustana, eli paint it black edellisen framen p‰‰lle.
+		sf::Time elapsed = clock.restart(); // Resets the clock and returns the time
+		window.clear(sf::Color::Black); // Clears the screen with black after each frame
 		update(elapsed); // Updates everything
 		draw(window); // Draws everything
 		window.display(); // Displays current drawn objects
