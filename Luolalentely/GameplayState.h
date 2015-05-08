@@ -23,7 +23,7 @@ private:
 	std::vector<GameObject*> gameObjects;
 	TextureManager textMgr;
 	sf::Sprite backGround;
-
+	sf::Sprite health;
 	GameObject *player1;
 };
 #endif

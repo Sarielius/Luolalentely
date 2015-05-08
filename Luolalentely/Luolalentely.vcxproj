@@ -80,6 +80,8 @@
     <ClCompile Include="ColliderComponent.cpp" />
     <ClCompile Include="CollisionHandler.cpp" />
     <ClCompile Include="Convert.cpp" />
+    <ClCompile Include="GameOverState.cpp" />
+    <ClCompile Include="HealthComponent.cpp" />
     <ClCompile Include="PauseState.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameComponent.cpp" />
@@ -103,6 +105,8 @@
     <ClInclude Include="ColliderComponent.h" />
     <ClInclude Include="CollisionHandler.h" />
     <ClInclude Include="Convert.h" />
+    <ClInclude Include="GameOverState.h" />
+    <ClInclude Include="HealthComponent.h" />
     <ClInclude Include="PauseState.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameComponent.h" />

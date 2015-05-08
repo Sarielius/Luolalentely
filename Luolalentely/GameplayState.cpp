@@ -6,6 +6,7 @@
 #include "WallSpriteComponent.h"
 #include "GoalComponent.h"
 #include "GoalSpriteComponent.h"
+#include "HealthComponent.h"
 #include <fstream>
 #include <cassert>
 #include <iostream>
@@ -15,6 +16,7 @@ GameplayState::GameplayState(Game *game) : GameState(game), world(b2Vec2(0.0f, 8
 	world.SetContactListener(&handler);
 	this->loadTextures();
 	this->backGround.setTexture(this->textMgr.getRef("background"));
+	this->health.setTexture(this->textMgr.getRef("health"));
 
 	loadTileMap("maps/tilemap1.txt");
 
@@ -24,7 +26,9 @@ GameplayState::GameplayState(Game *game) : GameState(game), world(b2Vec2(0.0f, 8
 	player1->pushComponent(new ColliderComponent(player1, world, sf::FloatRect(128.f, 128.f, 32.f, 32.f)));
 	player1->pushComponent(new PlayerInputComponent(player1));
 	player1->pushComponent(new CameraComponent(player1));
+	player1->pushComponent(new HealthComponent(player1));
 	addGameObject(player1);
+
 	std::cout << "Player object created." << std::endl;
 }
 
@@ -46,11 +50,13 @@ void GameplayState::update(sf::Time &elapsed)
 		object->update(elapsed);
 	}
 
+	health.setScale(sf::Vector2f (player1->getComponent<HealthComponent>()->getHealth() /
+		player1->getComponent<HealthComponent>()->getMaxHealth(), 1.0f));
 }
 
 void GameplayState::draw(sf::RenderWindow& win)
 {
-	game->window.setView(game->window.getDefaultView());
+	
 
 	game->window.draw(backGround); 
 
@@ -60,6 +66,10 @@ void GameplayState::draw(sf::RenderWindow& win)
 	{
 		object->draw(win); // Draws all gameobjects
 	}
+
+	game->window.setView(game->window.getDefaultView());
+
+	game->window.draw(health);
 }
 
 void GameplayState::addGameObject(GameObject* gameObject)
@@ -120,6 +130,7 @@ void GameplayState::loadTileMap(const std::string &path)
 void GameplayState::loadTextures() 
 {
 	textMgr.loadTexture("background", "sprites/tausta.png"); 
+	textMgr.loadTexture("health", "sprites/health.png");
 	textMgr.loadTexture("sprite", "sprites/alus.png");
 	textMgr.loadTexture("wall", "sprites/wall.png");
 	textMgr.loadTexture("empty", "sprites/tyhja.png");

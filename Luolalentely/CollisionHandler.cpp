@@ -1,6 +1,9 @@
 #include "CollisionHandler.h"
 #include "WinState.h"
-
+#include "GameOverState.h"
+#include "PlayerInputComponent.h"
+#include "HealthComponent.h"
+#include "ColliderComponent.h"
 
 CollisionHandler::CollisionHandler()
 {
@@ -18,9 +21,7 @@ void CollisionHandler::BeginContact(b2Contact* contact)
 }
 
 void CollisionHandler::EndContact(b2Contact* contact)
-{
-
-}
+{}
 
 
 void CollisionHandler::handleCollision(GameObject* objectA, GameObject* objectB)
@@ -31,5 +32,32 @@ void CollisionHandler::handleCollision(GameObject* objectA, GameObject* objectB)
 		{
 			objectA->getGame()->getStateManager()->change(new WinState(objectA->getGame()));
 		});
+	}
+	else if (objectA->type == TYPES::PLAYER && objectB->type == TYPES::WALL)
+	{
+		
+		objectA->getComponent<HealthComponent>()->setHealth(-0.02f*objectA->getComponent<ColliderComponent>()->getBody()->GetLinearVelocity().Length());
+		
+
+		if (objectA->getComponent<HealthComponent>()->getHealth() <= 0)
+		{
+			objectA->getGame()->getStateManager()->doNextUpdate([objectA]()
+			{
+				objectA->getGame()->getStateManager()->change(new GameOverState(objectA->getGame()));
+			});
+		}
+
+	}
+	else if (objectB->type == TYPES::PLAYER && objectA->type == WALL)
+	{
+		objectB->getComponent<HealthComponent>()->setHealth(-0.02f*objectB->getComponent<ColliderComponent>()->getBody()->GetLinearVelocity().Length());
+
+		if (objectB->getComponent<HealthComponent>()->getHealth() <= 0)
+		{
+			objectB->getGame()->getStateManager()->doNextUpdate([objectB]()
+			{
+				objectB->getGame()->getStateManager()->change(new GameOverState(objectB->getGame()));
+			});
+		}
 	}
 }

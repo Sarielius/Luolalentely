@@ -25,12 +25,12 @@ void MenuState::update(sf::Time &elapsed)
 	{
 		selection = 1;
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 	{
 		selection = 2;
 	}
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
 	{
 		if (selection == 1)
 		{
@@ -55,7 +55,7 @@ void MenuState::draw(sf::RenderWindow& win)
 	{
 		game->window.draw(menuBackGround1);
 	}
-	if (selection == 2)
+	else if (selection == 2)
 	{
 		game->window.draw(menuBackGround2);
 	}
