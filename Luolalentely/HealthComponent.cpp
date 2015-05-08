@@ -3,6 +3,7 @@
 
 HealthComponent::HealthComponent(GameObject *g) : GameComponent(g)
 {
+	alive = true;
 	maximumHealth = 1.0f;
 	currentHealth = maximumHealth;
 }
@@ -33,4 +34,7 @@ float HealthComponent::getHealth()
 void HealthComponent::setHealth(float damage)
 {
 	currentHealth = currentHealth + damage;
+
+	if (currentHealth <= 0) 
+		alive = false;
 }

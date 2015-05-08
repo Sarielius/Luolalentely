@@ -20,14 +20,14 @@ GameplayState::GameplayState(Game *game) : GameState(game), world(b2Vec2(0.0f, 8
 
 	loadTileMap("maps/tilemap1.txt");
 
-	player1 = new GameObject(game);
-	player1->type = TYPES::PLAYER;
-	player1->pushComponent(new SpriteComponent(player1, textMgr.getRef("sprite")));
-	player1->pushComponent(new ColliderComponent(player1, world, sf::FloatRect(128.f, 128.f, 32.f, 32.f)));
-	player1->pushComponent(new PlayerInputComponent(player1));
-	player1->pushComponent(new CameraComponent(player1));
-	player1->pushComponent(new HealthComponent(player1));
-	addGameObject(player1);
+	player = new GameObject(game);
+	player->type = TYPES::PLAYER;
+	player->pushComponent(new SpriteComponent(player, textMgr.getRef("sprite")));
+	player->pushComponent(new ColliderComponent(player, world, sf::FloatRect(128.f, 128.f, 32.f, 32.f)));
+	player->pushComponent(new PlayerInputComponent(player));
+	player->pushComponent(new CameraComponent(player));
+	player->pushComponent(new HealthComponent(player));
+	addGameObject(player);
 
 	std::cout << "Player object created." << std::endl;
 }
@@ -50,8 +50,8 @@ void GameplayState::update(sf::Time &elapsed)
 		object->update(elapsed);
 	}
 
-	health.setScale(sf::Vector2f (player1->getComponent<HealthComponent>()->getHealth() /
-		player1->getComponent<HealthComponent>()->getMaxHealth(), 1.0f));
+	health.setScale(sf::Vector2f (player->getComponent<HealthComponent>()->getHealth() /
+		player->getComponent<HealthComponent>()->getMaxHealth(), 1.0f));
 }
 
 void GameplayState::draw(sf::RenderWindow& win)
@@ -60,7 +60,7 @@ void GameplayState::draw(sf::RenderWindow& win)
 
 	game->window.draw(backGround); 
 
-	game->window.setView(player1->getComponent<CameraComponent>()->getView());
+	game->window.setView(player->getComponent<CameraComponent>()->getView());
 
 	for (auto &object : gameObjects) 
 	{

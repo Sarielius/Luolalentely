@@ -49,8 +49,7 @@ void PlayerInputComponent::update(sf::Time &elapsed)
 
 	// Directional impulse
 	getOwner()->getComponent<ColliderComponent>()->getBody()->ApplyForce(velocity, getOwner()->getComponent<ColliderComponent>()->getBody()->GetWorldCenter(), true);
-	
-	
+
 } 
 
 void PlayerInputComponent::draw()

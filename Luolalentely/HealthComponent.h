@@ -12,7 +12,7 @@ public:
 	float getMaxHealth();
 	float getHealth();
 	void setHealth(float damage);
-
+	bool alive;
 private:
 	float currentHealth;
 	float maximumHealth;

@@ -24,6 +24,6 @@ private:
 	TextureManager textMgr;
 	sf::Sprite backGround;
 	sf::Sprite health;
-	GameObject *player1;
+	GameObject *player;
 };
 #endif

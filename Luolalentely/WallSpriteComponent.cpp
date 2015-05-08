@@ -4,7 +4,7 @@
 
 WallSpriteComponent::WallSpriteComponent(GameObject *g, sf::Texture &wallSprite, float x, float y) : GameComponent(g), wallSprite(wallSprite)
 {
-	this->wallSprite.setOrigin(wallSprite.getSize().x / 2, wallSprite.getSize().y / 2);
+	this->wallSprite.setOrigin(wallSprite.getSize().x / 2.0f, wallSprite.getSize().y / 2.0f);
 	this->wallSprite.setPosition(x, y);
 }
 

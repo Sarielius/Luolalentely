@@ -24,7 +24,7 @@ public:
 	template<class T>
 	T* getComponent() 
 	{
-		for (int i = 0; i < components.size(); i++) 
+		for (unsigned int i = 0; i < components.size(); i++) 
 		{
 			GameComponent* c = components[i];
 			if (typeid(T) == typeid(*c))

@@ -5,7 +5,7 @@
 
 GoalSpriteComponent::GoalSpriteComponent(GameObject *g, sf::Texture &goalSprite, float x, float y) : GameComponent(g), goalSprite(goalSprite)
 {
-	this->goalSprite.setOrigin(goalSprite.getSize().x / 2, goalSprite.getSize().y / 2);
+	this->goalSprite.setOrigin(goalSprite.getSize().x / 2.0f, goalSprite.getSize().y / 2.0f);
 	this->goalSprite.setPosition(x, y);
 }
 

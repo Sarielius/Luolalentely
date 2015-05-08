@@ -35,29 +35,33 @@ void CollisionHandler::handleCollision(GameObject* objectA, GameObject* objectB)
 	}
 	else if (objectA->type == TYPES::PLAYER && objectB->type == TYPES::WALL)
 	{
-		
-		objectA->getComponent<HealthComponent>()->setHealth(-0.02f*objectA->getComponent<ColliderComponent>()->getBody()->GetLinearVelocity().Length());
-		
-
-		if (objectA->getComponent<HealthComponent>()->getHealth() <= 0)
+		if (objectA->getComponent<HealthComponent>()->alive)
 		{
-			objectA->getGame()->getStateManager()->doNextUpdate([objectA]()
-			{
-				objectA->getGame()->getStateManager()->change(new GameOverState(objectA->getGame()));
-			});
-		}
+			objectA->getComponent<HealthComponent>()->setHealth(-0.02f*objectA->getComponent<ColliderComponent>()->getBody()->GetLinearVelocity().Length());
 
+
+			if (!objectA->getComponent<HealthComponent>()->alive)
+			{
+				objectA->getGame()->getStateManager()->doNextUpdate([objectA]()
+				{
+					objectA->getGame()->getStateManager()->change(new GameOverState(objectA->getGame()));
+				});
+			}
+		}
 	}
 	else if (objectB->type == TYPES::PLAYER && objectA->type == WALL)
 	{
-		objectB->getComponent<HealthComponent>()->setHealth(-0.02f*objectB->getComponent<ColliderComponent>()->getBody()->GetLinearVelocity().Length());
-
-		if (objectB->getComponent<HealthComponent>()->getHealth() <= 0)
+		if (objectB->getComponent<HealthComponent>()->alive)
 		{
-			objectB->getGame()->getStateManager()->doNextUpdate([objectB]()
+			objectB->getComponent<HealthComponent>()->setHealth(-0.02f*objectB->getComponent<ColliderComponent>()->getBody()->GetLinearVelocity().Length());
+
+			if (!objectB->getComponent<HealthComponent>()->alive)
 			{
-				objectB->getGame()->getStateManager()->change(new GameOverState(objectB->getGame()));
-			});
+				objectB->getGame()->getStateManager()->doNextUpdate([objectB]()
+				{
+					objectB->getGame()->getStateManager()->change(new GameOverState(objectB->getGame()));
+				});
+			}
 		}
 	}
 }

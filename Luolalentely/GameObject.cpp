@@ -31,7 +31,6 @@ void GameObject::draw(sf::RenderWindow& win) // Draws the content of the compone
 	for (size_t i = 0; i < components.size(); i++) {
 		components[i]->draw(win);
 	}
-	
 }
 
 void GameObject::pushComponent(GameComponent* compo) // Adds components
