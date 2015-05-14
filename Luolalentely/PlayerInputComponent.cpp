@@ -18,8 +18,6 @@ void PlayerInputComponent::update(sf::Time &elapsed)
 	const float speed = 4.0f; // Base speed
 	float angle = getOwner()->getComponent<ColliderComponent>()->getBody()->GetAngle();
 	float rotation = 0.f; // Base rotation
-	
-
 	b2Vec2 velocity(0,0); // Contains the values for x and y.
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
@@ -28,7 +26,7 @@ void PlayerInputComponent::update(sf::Time &elapsed)
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
-		rotation = 0.0275f; 
+		rotation = 0.0275f;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) // Directional force towards the ship's tip
 	{ 
@@ -53,6 +51,4 @@ void PlayerInputComponent::update(sf::Time &elapsed)
 } 
 
 void PlayerInputComponent::draw()
-{
-	
-}
+{}
