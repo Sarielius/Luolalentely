@@ -20,7 +20,7 @@ public:
 	void draw(sf::RenderWindow& win);
 	void pushComponent(GameComponent* compo);
 	Game* getGame();
-
+	
 	template<class T>
 	T* getComponent() 
 	{
